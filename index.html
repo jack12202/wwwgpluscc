@@ -106,6 +106,27 @@
       gap: 10px;
       margin-bottom: 20px;
     }
+
+.secondary-actions.secondary-help{
+  justify-content: center;
+  margin: 10px 0 18px;
+}
+.secondary-actions.secondary-help .btn-soft{
+  width: min(520px, 100%);
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+.btn-soft-help{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.92);
+}
+.btn-soft-help:hover{
+  background: rgba(255,255,255,.09);
+  border-color: rgba(96,165,250,.55);
+  transform: translateY(-1px);
+}
+
     .btn-soft {
       flex: 1;
       padding: 10px 0;
@@ -285,7 +306,142 @@
       .sf-text { font-size: 0.85rem; }
       .sf-btn { padding: 6px 12px; font-size: 0.85rem; }
     }
-  </style>
+  
+
+/* === Other AI (secondary) === */
+.actions-gap{ height: 18px; }
+.actions-gap-sm{ height: 12px; }
+.secondary-actions.secondary-between{
+  display:flex;
+  justify-content:center;
+  gap: 0;
+  margin: 0 0 0;
+}
+.secondary-actions.secondary-between .btn-ai{
+  width: min(460px, 100%);
+  padding: .62rem 1.0rem;
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px dashed rgba(96,165,250,.45);
+  box-shadow: none;
+  color: rgba(255,255,255,.92);
+  font-weight: 900;
+  cursor: pointer;
+}
+.secondary-actions.secondary-between .btn-ai:hover{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(96,165,250,.70);
+  transform: translateY(-1px);
+}
+.secondary-actions.secondary-between .btn-ai .sub{
+  display:block;
+  margin-top: 4px;
+  font-size:.76rem;
+  opacity:.78;
+  font-weight: 700;
+}
+
+/* === AI Modal (control-panel style) === */
+.modal-card-wide{ width: min(760px, 96vw); }
+.ai-section{ margin-top: 10px; }
+.ai-section:first-of-type{ margin-top: 6px; }
+.ai-section-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:900;
+  color: rgba(255,255,255,.92);
+  margin: 6px 0 8px;
+  font-size: .92rem;
+  opacity:.95;
+}
+.ai-section-title::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background: rgba(255,255,255,.10);
+  border-radius:1px;
+}
+.ai-items{ display:flex; flex-direction:column; gap:10px; }
+.ai-item{
+  position:relative;
+  padding:12px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  transition: transform .16s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  outline: none;
+}
+.ai-item:hover,
+.ai-item:focus-within{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.085);
+  border-color: rgba(96,165,250,.40);
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+}
+.ai-left .ai-name{ font-weight: 900; font-size: 1.02rem; }
+.ai-left .ai-meta{ margin-top: 2px; font-size: .88rem; opacity: .86; }
+.ai-pill{
+  display:inline-flex;
+  align-items:center;
+  margin-left:8px;
+  padding:2px 8px;
+  font-size:.72rem;
+  font-weight:900;
+  border-radius:9999px;
+  border:1px solid rgba(96,165,250,.60);
+  background: rgba(59,130,246,.18);
+  color:#dbeafe;
+  white-space:nowrap;
+}
+.ai-note2{
+  opacity:.92;
+  color: rgba(219,234,254,.92);
+  font-weight:700;
+}
+.ai-item.featured{
+  border-color: rgba(96,165,250,.42);
+  background: linear-gradient(180deg, rgba(96,165,250,.16), rgba(255,255,255,.06));
+}
+.ai-item.featured:hover,
+.ai-item.featured:focus-within{
+  border-color: rgba(96,165,250,.70);
+  box-shadow: 0 14px 34px rgba(59,130,246,.18), 0 10px 28px rgba(0,0,0,.28);
+}
+.ai-actions{ position:relative; min-width: 92px; display:flex; justify-content:flex-end; }
+.ai-buy{
+  opacity:0;
+  pointer-events:none;
+  transform: translateY(-50%) scale(.98);
+  position:absolute;
+  right:0;
+  top:50%;
+  transition: opacity .15s ease, transform .15s ease;
+  padding:.42rem .72rem;
+  border-radius:10px;
+  font-weight:900;
+  border:1px solid rgba(96,165,250,.65);
+  color:#fff;
+  background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
+}
+.ai-item:hover .ai-buy,
+.ai-item:focus-within .ai-buy{
+  opacity:1;
+  pointer-events:auto;
+  transform: translateY(-50%) scale(1);
+}
+.ai-tip{
+  margin: 10px 0 0;
+  font-size: .86rem;
+  opacity: .86;
+  color: rgba(255,255,255,.85);
+}
+
+</style>
 </head>
 <body>
 
@@ -314,12 +470,20 @@
       <button class="btn-recharge" id="rechargeBtn">💳 进入自动充值系统</button>
     </div>
 
-    <div class="secondary-actions">
-        <a class="btn-soft btn-soft-green" id="btnContactSupport">
-            💬 联系人工客服
-        </a>
-        <a class="btn-soft btn-soft-gold" id="btnOpenWhy">
-            ❓ 价格说明
+<div class="actions-gap" aria-hidden="true"></div>
+<div class="secondary-actions secondary-between">
+  <button class="btn-ai" id="openAiModal" aria-label="查看其他 AI 官方会员充值">
+    🤖 其他 AI 官方会员（可选）
+    <span class="sub">ChatGPT Pro · Gemini · Claude · Super Grok</span>
+  </button>
+</div>
+<div class="actions-gap-sm" aria-hidden="true"></div>
+
+
+
+    <div class="secondary-actions secondary-help">
+        <a class="btn-soft btn-soft-help" id="btnHelpCenter">
+            🆘 帮助与说明
         </a>
     </div>
 
@@ -379,6 +543,71 @@
       <div class="rs-actions">
         <button class="rs-btn rs-btn-ghost" id="rsCancel">取消</button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-mask" id="aiModal" aria-hidden="true">
+  <div class="modal-card modal-card-wide" role="dialog" aria-labelledby="aiTitle" tabindex="-1">
+    <button class="modal-close" id="aiClose" aria-label="关闭">×</button>
+    <h3 id="aiTitle">其他 AI 官方会员充值</h3>
+
+    <div class="ai-section">
+      <div class="ai-section-title">✨ 推荐方案</div>
+      <div class="ai-items" role="list">
+        <div class="ai-item featured" role="listitem" tabindex="0" aria-label="ChatGPT Pro ¥1780 热门推荐">
+          <div class="ai-left">
+            <div class="ai-name">🚀 ChatGPT Pro <span class="ai-pill">热门</span></div>
+            <div class="ai-meta">官方会员 · ¥1780 <span class="ai-note2">｜高阶用户推荐</span></div>
+          </div>
+          <div class="ai-actions">
+            <button class="ai-buy" data-url="https://fe.dtyuedan.cn/shop/LID4JG73">点击购买</button>
+          </div>
+        </div>
+
+        <div class="ai-item featured" role="listitem" tabindex="0" aria-label="Gemini Pro 成品号 3个月 ¥388 推荐">
+          <div class="ai-left">
+            <div class="ai-name">💎 Gemini Pro（成品号） <span class="ai-pill">推荐</span></div>
+            <div class="ai-meta">3个月 · ¥388 · 官方通道 <span class="ai-note2">｜性价比更高</span></div>
+          </div>
+          <div class="ai-actions">
+            <button class="ai-buy" data-url="https://fe.dtyuedan.cn/shop/LID4JG73">点击购买</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-section">
+      <div class="ai-section-title">更多选项</div>
+      <div class="ai-items" role="list">
+        <div class="ai-item" role="listitem" tabindex="0" aria-label="Claude Pro 1个月 ¥188">
+          <div class="ai-left">
+            <div class="ai-name">Claude Pro</div>
+            <div class="ai-meta">1个月 · ¥188 · 官方通道</div>
+          </div>
+          <div class="ai-actions">
+            <button class="ai-buy" data-url="https://fe.dtyuedan.cn/shop/LID4JG73">点击购买</button>
+          </div>
+        </div>
+
+        <div class="ai-item" role="listitem" tabindex="0" aria-label="Super Grok 1个月 ¥228">
+          <div class="ai-left">
+            <div class="ai-name">Super Grok</div>
+            <div class="ai-meta">1个月 · ¥228 · 官方通道</div>
+          </div>
+          <div class="ai-actions">
+            <button class="ai-buy" data-url="https://fe.dtyuedan.cn/shop/LID4JG73">点击购买</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-tip">提示：如需人工协助，复制微信联系人工。</div>
+
+    <div class="modal-footer" style="margin-top:12px; gap:.6rem;">
+      <button class="cta-mini" id="aiCopyWx">复制微信：<span class="wx" id="aiWx">mmzi0723</span></button>
+      <a href="#" class="cta-outline" id="aiGoGpt">我只想充 GPT Plus</a>
     </div>
   </div>
 </div>
@@ -567,6 +796,121 @@
     document.getElementById('modalCopyWx')?.addEventListener('click', function() {
         copyWx('wxId', this);
     });
+
+
+// === AI Modal ===
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function q(s, root){ return (root||document).querySelector(s); }
+  function qa(s, root){ return Array.prototype.slice.call((root||document).querySelectorAll(s)); }
+
+  var modal = $('aiModal');
+  var openBtn = $('openAiModal');
+  var closeBtn = $('aiClose');
+  var copyBtn = $('aiCopyWx');
+  var goGpt = $('aiGoGpt');
+
+  function lockScroll(on){
+    document.body.classList[on ? 'add' : 'remove']('modal-open');
+  }
+
+  function getWx(){
+    var wxEl = $('footerWxId') || $('wxId') || q('.sf-wx-id');
+    return wxEl ? wxEl.textContent.trim() : 'mmzi0723';
+  }
+
+  function copyText(t){
+    if(navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
+    var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta); return Promise.resolve();
+  }
+
+  var lastFocus = null;
+  function openModal(){
+    if(!modal) return;
+    lastFocus = document.activeElement;
+    var wx = getWx();
+    var wxSpan = $('aiWx');
+    if(wxSpan) wxSpan.textContent = wx;
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+    lockScroll(true);
+    var card = q('.modal-card', modal);
+    if(card) card.focus({preventScroll:true});
+  }
+
+  function closeModal(){
+    if(!modal) return;
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    lockScroll(false);
+    if(lastFocus && typeof lastFocus.focus==='function') lastFocus.focus();
+  }
+
+  if(openBtn) openBtn.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  if(modal) modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && modal && modal.classList.contains('show')) closeModal();
+  });
+
+  if(copyBtn) copyBtn.addEventListener('click', function(){
+    var wx = getWx();
+    var old = copyBtn.textContent;
+    copyText(wx).then(function(){
+      copyBtn.textContent = '已复制：' + wx;
+      setTimeout(function(){ copyBtn.textContent = old; }, 1600);
+    });
+  });
+
+  if(goGpt) goGpt.addEventListener('click', function(e){
+    e.preventDefault();
+    closeModal();
+    try{ window.scrollTo({ top: 0, behavior: 'smooth' }); }catch(err){}
+  });
+
+  function openBuy(url){
+    window.open(url || BUY_URL, '_blank', 'noopener');
+  }
+
+  qa('.ai-buy', modal).forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      openBuy(btn.getAttribute('data-url'));
+    });
+  });
+
+  qa('.ai-item', modal).forEach(function(item){
+    item.addEventListener('keydown', function(e){
+      if(e.key==='Enter' || e.key===' '){
+        e.preventDefault();
+        var btn = q('.ai-buy', item);
+        if(btn) btn.click();
+      }
+    });
+  });
+})();
+
+
+// 帮助与说明（合并入口）：打开说明弹窗并默认展示“价格构成”
+const btnHelpCenter = document.getElementById('btnHelpCenter');
+btnHelpCenter?.addEventListener('click', (e) => {
+  e.preventDefault();
+  // 复用现有的 openModalWithTab(tabName)
+  if (typeof openModalWithTab === 'function') {
+    openModalWithTab('price');
+  } else {
+    // 兜底：如果函数名被改动，则尝试直接展示 whyModal
+    const whyModal = document.getElementById('whyModal');
+    if (whyModal) {
+      whyModal.classList.add('show');
+      document.body.classList.add('modal-open');
+    }
+  }
+});
+
 </script>
 
 </body>
