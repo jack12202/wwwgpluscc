@@ -3,27 +3,232 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GPlus.cc 新手开通指南｜ChatGPT Plus 怎么付款和开通</title>
-<meta name="description" content="GPlus.cc 的 ChatGPT Plus 新手开通指南，整理付款方式、账号准备、安全提醒和常见问题，适合第一次开通 Plus 的用户。">
+<title>嘉哥博客｜ChatGPT Plus / Pro 开通升级指南</title>
+<meta name="description" content="嘉哥博客整理 ChatGPT Plus / Pro 开通升级、支付宝微信充值、无境外卡、账号安全、Pro 选择、售后规则和服务确认方式。">
 <link rel="canonical" href="https://www.gplus.cc/blog/">
 <style>
-  :root { --bg:#0f172a; --panel:#172238; --text:#f4f8fb; --muted:#a8b7c6; --line:#2a415e; --accent:#60a5fa; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.7; }
-  .wrap { width:min(860px, calc(100% - 32px)); margin:0 auto; padding:28px 0 56px; }
-  .nav { display:flex; justify-content:space-between; gap:16px; align-items:center; padding-bottom:18px; border-bottom:1px solid var(--line); }
-  .brand { color:#fff; text-decoration:none; font-weight:800; }
-  .home { color:#06101d; background:var(--accent); text-decoration:none; padding:8px 14px; border-radius:8px; font-weight:700; font-size:14px; white-space:nowrap; }
-  h1 { font-size:clamp(28px, 5vw, 40px); line-height:1.18; margin:34px 0 12px; letter-spacing:0; }
-  .intro { color:var(--muted); max-width:680px; margin:0 0 22px; }
-  .quick { display:inline-flex; color:#bfdbfe; text-decoration:none; border:1px solid rgba(96,165,250,.45); padding:8px 12px; border-radius:8px; margin-bottom:26px; }
-  .grid { display:grid; gap:14px; }
-  .card { display:block; text-decoration:none; color:inherit; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:18px; }
-  .card:hover { border-color:rgba(96,165,250,.8); }
-  .tag { color:#bfdbfe; font-size:13px; font-weight:700; }
-  .title { font-size:19px; font-weight:800; margin:6px 0; }
-  .desc { color:var(--muted); margin:0; }
-  .note { margin-top:26px; color:var(--muted); font-size:14px; }
+  :root {
+    --bg: #f7f3ea;
+    --paper: #fffefa;
+    --ink: #15231f;
+    --muted: #68766f;
+    --line: rgba(21,35,31,.12);
+    --green: #0f766e;
+    --green-dark: #0b4f49;
+    --gold: #b7791f;
+    --blue: #27568a;
+    --soft-green: #e8f6ef;
+    --soft-gold: #fbefd8;
+    --soft-blue: #e6eef7;
+    --shadow: 0 18px 54px rgba(37,45,42,.1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.72;
+    background:
+      radial-gradient(circle at 14% 0%, rgba(183,121,31,.16), transparent 26%),
+      radial-gradient(circle at 92% 10%, rgba(15,118,110,.13), transparent 28%),
+      linear-gradient(135deg, #fbf7ed, #eff7f3 52%, #f7f1e7);
+  }
+  a { color: inherit; }
+  .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 72px; }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { color: var(--ink); text-decoration: none; font-weight: 950; line-height: 1.1; }
+  .brand small { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; font-weight: 750; }
+  .nav-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.68);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 850;
+  }
+  .nav-link.primary { color: #fff; background: var(--green); border-color: var(--green); }
+  .hero {
+    margin: 26px 0 18px;
+    padding: clamp(20px, 3.4vw, 32px);
+    border-radius: 28px;
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(135deg, rgba(255,254,250,.86), rgba(239,248,243,.84)),
+      radial-gradient(circle at 88% 18%, rgba(15,118,110,.16), transparent 34%);
+    box-shadow: var(--shadow);
+  }
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+    gap: 24px;
+    align-items: end;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 12px;
+    color: var(--green-dark);
+    font-size: 13px;
+    font-weight: 950;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .eyebrow:before { content: ""; width: 26px; height: 1px; background: var(--green); }
+  h1 {
+    max-width: 720px;
+    margin: 0 0 14px;
+    font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+    font-size: clamp(30px, 4.2vw, 48px);
+    line-height: 1.12;
+    letter-spacing: -.025em;
+  }
+  .intro { max-width: 680px; margin: 0; color: var(--muted); font-size: 16px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .hero-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 15px;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--green-dark);
+    font-weight: 900;
+  }
+  .hero-action.primary { color: #fff; background: var(--green); border-color: var(--green); }
+  .toolbox {
+    padding: 16px;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.72);
+  }
+  .toolbox strong { display: block; margin-bottom: 10px; font-size: 18px; }
+  .search-box {
+    width: 100%;
+    min-height: 46px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    padding: 0 14px;
+    font: inherit;
+    outline: none;
+  }
+  .search-box:focus { border-color: rgba(15,118,110,.5); box-shadow: 0 0 0 4px rgba(15,118,110,.1); }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .filter {
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 7px 11px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 850;
+    cursor: pointer;
+  }
+  .filter.is-active { color: #fff; background: var(--green); border-color: var(--green); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+  .stat { padding: 12px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.7); }
+  .stat strong { display: block; font-size: 21px; line-height: 1.1; }
+  .stat span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; }
+  .section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px;
+    margin: 28px 0 14px;
+  }
+  .section-title h2 {
+    margin: 0;
+    font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+    font-size: clamp(25px, 3.4vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -.025em;
+  }
+  .section-title p { margin: 0; color: var(--muted); max-width: 440px; }
+  .starter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .starter-card, .article-row {
+    border: 1px solid var(--line);
+    background: rgba(255,254,250,.78);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  .starter-card:hover, .article-row:hover { transform: translateY(-3px); border-color: rgba(15,118,110,.42); box-shadow: 0 24px 64px rgba(37,45,42,.14); }
+  .starter-card { min-height: 230px; padding: 20px; border-radius: 24px; display: flex; flex-direction: column; }
+  .starter-card h3 { margin: 14px 0 9px; font-size: 24px; line-height: 1.18; letter-spacing: -.02em; }
+  .starter-card p, .article-row p { margin: 0; color: var(--muted); }
+  .starter-card .read { margin-top: auto; padding-top: 20px; color: var(--green-dark); font-weight: 950; }
+  .tag {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    color: var(--green-dark);
+    background: rgba(15,118,110,.1);
+    font-size: 13px;
+    font-weight: 950;
+  }
+  .tag.pay { color: #73460b; background: rgba(183,121,31,.14); }
+  .tag.account { color: #1f4d7d; background: rgba(39,86,138,.12); }
+  .article-list { display: grid; gap: 10px; }
+  .article-row {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: center;
+    border-radius: 22px;
+    padding: 16px;
+  }
+  .num {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background: var(--soft-green);
+    color: var(--green-dark);
+    font-weight: 950;
+  }
+  .article-row[data-tone="gold"] .num { color: #73460b; background: var(--soft-gold); }
+  .article-row[data-tone="blue"] .num { color: #1f4d7d; background: var(--soft-blue); }
+  .article-row h3 { margin: 8px 0 5px; font-size: 22px; line-height: 1.22; letter-spacing: -.015em; }
+  .article-row .go { color: var(--green-dark); font-weight: 950; white-space: nowrap; }
+  .empty { display: none; margin: 18px 0; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.74); color: var(--muted); }
+  .footer-note { margin-top: 30px; color: var(--muted); font-size: 14px; }
+  @media (max-width: 900px) {
+    .hero-layout, .starter-grid { grid-template-columns: 1fr; }
+    .section-title { align-items: flex-start; flex-direction: column; }
+  }
+  @media (max-width: 640px) {
+    .wrap { width: min(100% - 22px, 1120px); padding-top: 14px; }
+    .nav { align-items: flex-start; flex-direction: column; }
+    .nav-actions { justify-content: flex-start; }
+    .stats { grid-template-columns: 1fr; }
+    .article-row { grid-template-columns: 1fr; gap: 10px; }
+    .article-row .go { margin-top: 4px; }
+    .hero, .starter-card, .article-row { border-radius: 22px; }
+  }
 </style>
 <script>
 var _hmt = _hmt || [];
@@ -38,57 +243,183 @@ var _hmt = _hmt || [];
 <body>
 <main class="wrap">
   <nav class="nav">
-    <a class="brand" href="/">GPlus.cc</a>
-    <a class="home" href="/">进入首页</a>
+    <a class="brand" href="/">嘉哥 · GPlus.cc<small>ChatGPT Plus / Pro 开通升级指南</small></a>
+    <div class="nav-actions">
+      <a class="nav-link" href="/">返回首页</a>
+      <a class="nav-link primary" href="/api/recharge-go">已购买去激活</a>
+    </div>
   </nav>
-  <h1>第一次开通 ChatGPT Plus，先看这几件事</h1>
-  <p class="intro">这里不做复杂科普，只整理新手最容易卡住的账号、付款、订阅确认和安全问题。看完如果不想自己折腾，可以回到首页选择开通方案。</p>
-  <a class="quick" href="/">进入 GPlus.cc 选择开通方案</a>
 
-  <section class="grid" aria-label="文章列表">
-    <a class="card" href="/blog/gptplus-huiyuan-zenme-chong.html">
-      <div class="tag">GPT Plus 开通教程 · 2026-05-20</div>
-      <div class="title">GPTPlus 会员怎么冲？新手先看三条开通路径</div>
-      <p class="desc">GPTPlus 会员怎么冲？新手可以先分清官方网页、应用商店和充值卡密三条路径，再按付款条件选择开通方式。</p>
+  <section class="hero" aria-label="博客首页介绍">
+    <div class="hero-layout">
+      <div>
+        <div class="eyebrow">GPlus Guide</div>
+        <h1>开通 ChatGPT 前，先看这份教程目录。</h1>
+        <p class="intro">这里整理国内用户最常见的问题：Plus / Pro 怎么选、没有境外卡怎么办、微信支付宝怎么付款、账号安全和售后怎么确认。</p>
+        <div class="hero-actions">
+          <a class="hero-action primary" href="/blog/jiage-ai-gpt.html">先看嘉哥是谁</a>
+          <a class="hero-action" href="/blog/chatgpt-plus-pro-zenme-xuan.html">Plus / Pro 怎么选</a>
+        </div>
+        <div class="stats" aria-label="内容概览">
+          <div class="stat"><strong>10 篇</strong><span>当前教程</span></div>
+          <div class="stat"><strong>5 类</strong><span>付款 / 账号 / 售后</span></div>
+          <div class="stat"><strong>2300+</strong><span>服务经验沉淀</span></div>
+        </div>
+      </div>
+
+      <aside class="toolbox" aria-label="文章筛选">
+        <strong>快速找答案</strong>
+        <input class="search-box" id="articleSearch" type="search" placeholder="搜索：支付宝、微信、Pro、无境外卡、账号安全">
+        <div class="filters" aria-label="文章分类">
+          <button class="filter is-active" type="button" data-filter="all">全部</button>
+          <button class="filter" type="button" data-filter="brand">嘉哥是谁</button>
+          <button class="filter" type="button" data-filter="plan">Plus / Pro</button>
+          <button class="filter" type="button" data-filter="pay">支付方式</button>
+          <button class="filter" type="button" data-filter="account">账号安全</button>
+          <button class="filter" type="button" data-filter="beginner">新手路径</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="section-title">
+    <h2>推荐先看</h2>
+    <p>第一次来不用全读，先按自己的情况选一篇。</p>
+  </div>
+
+  <section class="starter-grid" aria-label="推荐文章">
+    <a class="starter-card article-link" href="/blog/jiage-ai-gpt.html" data-category="brand" data-search="嘉哥是谁 为什么 2025 GPT充值 野卡 2300 用户 正规渠道 售后">
+      <span class="tag">品牌说明</span>
+      <h3>嘉哥是谁？为什么我从 2025 年开始做 GPT 充值</h3>
+      <p>第一次看到嘉哥，先看服务怎么做、价格和售后怎么说。</p>
+      <span class="read">阅读全文</span>
     </a>
-    <a class="card" href="/blog/google-pay-gpt.html">
-      <div class="tag">GPT Plus 开通教程 · 2026-05-19</div>
-      <div class="title">如何用 Google 支付 GPT？先分清 Google Pay 和 Google Play</div>
-      <p class="desc">如何用 Google 支付 GPT？本文解释 Google Pay、Google Play 订阅、账号地区和余额限制，以及不想折腾时的开通选择。</p>
+
+    <a class="starter-card article-link" href="/blog/chatgpt-plus-pro-zenme-xuan.html" data-category="plan" data-search="ChatGPT Plus Pro 怎么选 Pro 100 Pro 200 iOS 订阅 发票 对公 售后">
+      <span class="tag">Plus / Pro</span>
+      <h3>ChatGPT Plus 和 Pro 怎么选？</h3>
+      <p>按使用频率、预算、账号订阅状态和发票对公需求判断。</p>
+      <span class="read">阅读全文</span>
     </a>
-    <a class="card" href="/blog/gpt-chengpinhao-goumai.html">
-      <div class="tag">账号选择 · 2026-05-14</div>
-      <div class="title">gpt成品号购买前先看清：独享号、共享号和代充区别</div>
-      <p class="desc">gpt成品号购买前，先分清已有账号代充、独享成品号和共享号。GPlus.cc 提供 Plus 独享成品号，不做共享号。</p>
-    </a>
-    <a class="card" href="/blog/chatgptplus-chongzhi-fufei.html">
-      <div class="tag">支付方式 · 2026-05-14</div>
-      <div class="title">ChatGPT Plus 充值付费怎么付款？国内用户先看三条路径</div>
-      <p class="desc">ChatGPT Plus 充值付费前，先分清网页订阅、应用商店订阅和第三方充值卡密三条路径。本文讲清国内用户怎么选、微信支付宝发生在哪个环节，以及付款后如何确认 Plus 生效。</p>
-    </a>
-    <a class="card" href="/blog/meiyou-jingwaika-gpt-chongzhi.html">
-      <div class="tag">支付方式 · 2026-05-11</div>
-      <div class="title">没有境外卡如何给 GPT 充值？先分清卡、应用商店和卡密</div>
-      <p class="desc">没有境外卡也想给 GPT 充值时，先分清 Visa/Mastercard、银联、应用商店和第三方卡密路径，再判断哪种方式适合自己。</p>
-    </a>
-    <a class="card" href="/blog/chatgpt-plus-weixin-chongzhi.html">
-      <div class="tag">支付方式 · 2026-05-10</div>
-      <div class="title">ChatGPT Plus 微信充值可以吗？官方网页没有直付入口时怎么开通</div>
-      <p class="desc">说明 ChatGPT Plus 官方网页没有微信直付入口时，国内用户可选的开通路径、账号安全边界和注意事项。</p>
-    </a>
-    <a class="card" href="/blog/chatgpt-plus-zhifubao-chongzhi.html">
-      <div class="tag">支付方式 · 2026-05-08</div>
-      <div class="title">ChatGPT Plus 支付宝充值可以吗？官方不支持直付时怎么开通</div>
-      <p class="desc">ChatGPT Plus 官方网页通常没有支付宝直付入口。国内用户说的支付宝充值，多数是通过第三方协助平台用支付宝付款，再完成 Plus 开通或续费。讲清适用场景、平台判断和开通后验收方式。</p>
-    </a>
-    <a class="card" href="/blog/security-risk-guide.html">
-      <div class="tag">安全提醒 · 2026-05-05</div>
-      <div class="title">ChatGPT Plus 开通前，哪些账号风险要先避开？</div>
-      <p class="desc">用自己的账号、少给敏感信息、远离异常低价渠道，是新手开通前最该确认的三件事。</p>
+
+    <a class="starter-card article-link" href="/blog/meiyou-jingwaika-gpt-chongzhi.html" data-category="pay" data-search="没有境外卡 GPT 充值 Visa Mastercard 银联 应用商店 卡密">
+      <span class="tag pay">无境外卡</span>
+      <h3>没有境外卡如何给 GPT 充值？</h3>
+      <p>先分清海外卡、应用商店和第三方卡密路径，少走弯路。</p>
+      <span class="read">阅读全文</span>
     </a>
   </section>
 
-  <p class="note">GPlus.cc 为第三方服务网站，并非 OpenAI 或 ChatGPT 官方网站。页面中提及的产品名称仅用于说明适配对象。</p>
+  <div class="section-title">
+    <h2>全部文章</h2>
+    <p>更像一份目录，方便快速扫标题和选择路径。</p>
+  </div>
+
+  <section class="article-list" id="articleGrid" aria-label="文章列表">
+    <a class="article-row article-link" href="/blog/chatgpt-plus-pro-zenme-xuan.html" data-tone="green" data-category="plan" data-search="ChatGPT Plus Pro 怎么选 Pro 100 Pro 200 iOS 订阅 发票 对公 售后">
+      <span class="num">01</span>
+      <div><span class="tag">Plus / Pro 选择</span><h3>ChatGPT Plus 和 Pro 怎么选？</h3><p>从使用频率、预算、账号订阅状态、iOS 订阅和发票对公需求判断。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/jiage-ai-gpt.html" data-tone="gold" data-category="brand" data-search="嘉哥是谁 GPT充值 2025 野卡 2300 正规渠道 账号 售后">
+      <span class="num">02</span>
+      <div><span class="tag pay">品牌说明</span><h3>嘉哥是谁？为什么我从 2025 年开始做 GPT 充值</h3><p>讲清嘉哥是谁、为什么做 GPT 充值、怎么开通、价格和售后怎么处理。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/gptplus-huiyuan-zenme-chong.html" data-tone="blue" data-category="beginner" data-search="GPTPlus 会员怎么冲 新手 官方网页 应用商店 卡密 开通路径">
+      <span class="num">03</span>
+      <div><span class="tag account">新手路径</span><h3>GPTPlus 会员怎么冲？</h3><p>新手先分清官方网页、应用商店和充值卡密三条路径。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/google-pay-gpt.html" data-tone="blue" data-category="pay" data-search="Google 支付 GPT Google Pay Google Play 账号地区 余额 订阅">
+      <span class="num">04</span>
+      <div><span class="tag account">Google Pay</span><h3>如何用 Google 支付 GPT？</h3><p>先分清 Google Pay 和 Google Play，再看账号地区、余额限制和开通选择。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/gpt-chengpinhao-goumai.html" data-tone="gold" data-category="account" data-search="GPT 成品号 购买 独享号 共享号 代充 区别 账号安全">
+      <span class="num">05</span>
+      <div><span class="tag pay">账号选择</span><h3>gpt成品号购买前先看清</h3><p>已有 GPT 账号优先开通自己的账号；不要把共享号当长期方案。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/chatgptplus-chongzhi-fufei.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 充值付费 付款 微信 支付宝 第三方 卡密">
+      <span class="num">06</span>
+      <div><span class="tag">支付方式</span><h3>ChatGPT Plus 充值付费怎么付款？</h3><p>讲清微信支付宝发生在哪个环节，以及付款后如何确认 Plus 生效。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/meiyou-jingwaika-gpt-chongzhi.html" data-tone="gold" data-category="pay" data-search="没有境外卡 GPT 充值 Visa Mastercard 银联 应用商店 卡密">
+      <span class="num">07</span>
+      <div><span class="tag pay">无境外卡</span><h3>没有境外卡如何给 GPT 充值？</h3><p>没有境外卡也想给 GPT 充值时，先分清可选路径。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/chatgpt-plus-weixin-chongzhi.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 微信充值 微信支付 国内付款 开通 Plus">
+      <span class="num">08</span>
+      <div><span class="tag">微信充值</span><h3>ChatGPT Plus 微信充值可以吗？</h3><p>说明微信付款、账号安全边界、付款凭证和开通后验收方式。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/chatgpt-plus-zhifubao-chongzhi.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 支付宝充值 支付宝付款 国内付款 开通 Plus">
+      <span class="num">09</span>
+      <div><span class="tag">支付宝充值</span><h3>ChatGPT Plus 支付宝充值可以吗？</h3><p>讲清官方网页没有支付宝直付入口时，支付宝充值通常是什么。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+
+    <a class="article-row article-link" href="/blog/security-risk-guide.html" data-tone="blue" data-category="account" data-search="ChatGPT Plus 开通 账号风险 账号安全 共享号 敏感信息 低价渠道">
+      <span class="num">10</span>
+      <div><span class="tag account">账号安全</span><h3>ChatGPT Plus 开通前，哪些账号风险要先避开？</h3><p>用自己的账号、少给敏感信息、远离异常低价渠道。</p></div>
+      <span class="go">阅读全文</span>
+    </a>
+  </section>
+
+  <p class="empty" id="emptyState">没有找到匹配文章。可以换一个关键词，比如“支付宝”“Pro”“无境外卡”。</p>
+  <p class="footer-note">GPlus.cc 为第三方服务网站，并非 OpenAI 或 ChatGPT 官方网站。页面中提及的产品名称仅用于说明适配对象。</p>
 </main>
+
+<script>
+(function() {
+  var active = 'all';
+  var search = document.getElementById('articleSearch');
+  var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.article-link'));
+  var empty = document.getElementById('emptyState');
+
+  function normalize(text) {
+    return (text || '').toLowerCase().replace(/\s+/g, '');
+  }
+
+  function applyFilter() {
+    var query = normalize(search && search.value);
+    var visibleCount = 0;
+
+    links.forEach(function(card) {
+      var category = card.getAttribute('data-category') || '';
+      var haystack = normalize(card.textContent + ' ' + (card.getAttribute('data-search') || ''));
+      var matchCategory = active === 'all' || category === active;
+      var matchSearch = !query || haystack.indexOf(query) !== -1;
+      var show = matchCategory && matchSearch;
+      card.style.display = show ? '' : 'none';
+      if (show) visibleCount += 1;
+    });
+
+    if (empty) empty.style.display = visibleCount ? 'none' : 'block';
+  }
+
+  filters.forEach(function(button) {
+    button.addEventListener('click', function() {
+      active = button.getAttribute('data-filter') || 'all';
+      filters.forEach(function(item) { item.classList.toggle('is-active', item === button); });
+      applyFilter();
+    });
+  });
+
+  if (search) search.addEventListener('input', applyFilter);
+})();
+</script>
 </body>
 </html>
