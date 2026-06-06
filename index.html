@@ -729,7 +729,7 @@ var _hmt = _hmt || [];
         <div class="hero-actions">
           <button class="btn btn-green js-buy" type="button">立即开通 Plus ¥188/月</button>
           <button class="btn btn-primary js-copy-wx" type="button">先问人工客服</button>
-          <button class="btn btn-ghost js-recharge" type="button">已购买去激活</button>
+          <a class="btn btn-ghost" href="https://ow800.com/auto" target="_blank" rel="noopener">已购买去激活</a>
         </div>
         <div class="service-bar" aria-label="核心信任点">
           <div class="service-item"><strong>无需账号密码</strong><span>按页面指引完成开通，尽量减少敏感信息暴露。</span></div>
@@ -797,13 +797,13 @@ var _hmt = _hmt || [];
       <div class="section-head">
         <div>
           <h2>付款后按步骤完成激活。</h2>
-          <p class="section-desc">已购买用户可以进入自助激活系统，按提示完成开通并回到账号里确认状态。</p>
+          <p class="section-desc">已购买用户可直接进入激活平台，按提示完成开通并回到账号里确认状态。</p>
         </div>
       </div>
       <div class="grid flow">
         <article class="card"><span class="step-num">1</span><h3>选择方案</h3><p>Plus 可直接下单；Pro 和发票/对公先人工确认。</p></article>
         <article class="card"><span class="step-num">2</span><h3>完成付款</h3><p>支持微信/支付宝，保留下单信息和付款凭证。</p></article>
-        <article class="card"><span class="step-num">3</span><h3>自助激活</h3><p>进入激活入口，按提示填写并提交开通信息。</p></article>
+        <article class="card"><span class="step-num">3</span><h3>前往激活平台</h3><p>进入激活平台，按提示填写并提交开通信息。</p></article>
         <article class="card"><span class="step-num">4</span><h3>确认到账</h3><p>回到自己的 ChatGPT 账号查看 Plus / Pro 状态。</p></article>
       </div>
     </section>
@@ -886,7 +886,7 @@ var _hmt = _hmt || [];
 
   <footer class="footer">
     <p>GPlus.cc 为第三方数字服务网站，与 OpenAI 或 ChatGPT 官方无隶属关系。页面中提及的产品名称仅用于说明服务适配对象。</p>
-    <p>客服微信：<strong>jiage01888</strong> ｜ 已购买用户可进入 <a href="/api/recharge-go">自助激活入口</a> ｜ <a href="/blog/">查看博客教程</a></p>
+    <p>客服微信：<strong>jiage01888</strong> ｜ 已购买用户可进入 <a href="https://ow800.com/auto" target="_blank" rel="noopener">激活平台入口</a> ｜ <a href="/blog/">查看博客教程</a></p>
   </footer>
 </div>
 
@@ -964,7 +964,7 @@ var _hmt = _hmt || [];
   document.querySelectorAll('.js-recharge').forEach(function(btn){
     btn.addEventListener('click', function(event){
       event.preventDefault();
-      openNew('/api/recharge-go');
+      openNew('https://ow800.com/auto');
     });
   });
 
