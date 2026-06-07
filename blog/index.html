@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>嘉哥博客｜ChatGPT Plus / Pro 开通升级指南</title>
-<meta name="description" content="嘉哥博客整理 ChatGPT Plus / Pro 开通升级、支付宝微信充值、无境外卡、账号安全、Pro 选择、售后规则和服务确认方式。">
+<meta name="description" content="嘉哥博客按问题整理 ChatGPT Plus / Pro 开通升级、支付宝微信充值、无境外卡、账号安全、Plus/Pro 选择、售后规则和服务确认方式。">
 <link rel="canonical" href="https://www.gplus.cc/blog/">
 <style>
   :root {
@@ -149,6 +149,72 @@
   .stat { padding: 12px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.7); }
   .stat strong { display: block; font-size: 21px; line-height: 1.1; }
   .stat span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; }
+  .path-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .path-card {
+    min-height: 198px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(255,254,250,.82);
+    box-shadow: var(--shadow);
+  }
+  .path-card h3 {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.22;
+  }
+  .path-card p { margin: 0; color: var(--muted); }
+  .path-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .mini-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--green);
+    background: var(--green);
+    color: #fff;
+    text-decoration: none;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  .mini-button.secondary {
+    color: var(--green-dark);
+    background: #fff;
+    border-color: var(--line);
+  }
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    z-index: 50;
+    transform: translateX(-50%);
+    padding: 10px 14px;
+    border-radius: 999px;
+    color: #fff;
+    background: rgba(21,35,31,.94);
+    box-shadow: 0 16px 30px rgba(37,45,42,.22);
+    opacity: 0;
+    transition: opacity .18s ease;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
   .section-title {
     display: flex;
     justify-content: space-between;
@@ -217,7 +283,7 @@
   .empty { display: none; margin: 18px 0; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.74); color: var(--muted); }
   .footer-note { margin-top: 30px; color: var(--muted); font-size: 14px; }
   @media (max-width: 900px) {
-    .hero-layout, .starter-grid { grid-template-columns: 1fr; }
+    .hero-layout, .starter-grid, .path-grid { grid-template-columns: 1fr; }
     .section-title { align-items: flex-start; flex-direction: column; }
   }
   @media (max-width: 640px) {
@@ -230,6 +296,40 @@
     .hero, .starter-card, .article-row { border-radius: 22px; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "嘉哥博客｜ChatGPT Plus / Pro 开通升级指南",
+  "description": "按问题整理 ChatGPT Plus / Pro 开通、微信支付宝付款、无境外卡、账号安全和售后确认方式。",
+  "url": "https://www.gplus.cc/blog/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "GPlus.cc",
+    "url": "https://www.gplus.cc/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "GPlus.cc",
+      "item": "https://www.gplus.cc/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "博客",
+      "item": "https://www.gplus.cc/blog/"
+    }
+  ]
+}
+</script>
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -254,11 +354,12 @@ var _hmt = _hmt || [];
     <div class="hero-layout">
       <div>
         <div class="eyebrow">GPlus Guide</div>
-        <h1>开通 ChatGPT 前，先看这份教程目录。</h1>
-        <p class="intro">这里整理国内用户最常见的问题：Plus / Pro 怎么选、没有境外卡怎么办、微信支付宝怎么付款、账号安全和售后怎么确认。</p>
+        <h1>按你的问题，找到 ChatGPT Plus / Pro 开通路径。</h1>
+        <p class="intro">这里整理国内用户最常见的问题：Plus / Pro 怎么选、没有境外卡怎么办、微信支付宝怎么付款、账号安全和售后怎么确认。想直接开通，也可以从这里回到首页。</p>
         <div class="hero-actions">
           <a class="hero-action primary" href="/blog/jiage-ai-gpt.html">先看嘉哥是谁</a>
           <a class="hero-action" href="/blog/chatgpt-plus-pro-zenme-xuan.html">Plus / Pro 怎么选</a>
+          <a class="hero-action" href="/">直接开通 Plus</a>
         </div>
         <div class="stats" aria-label="内容概览">
           <div class="stat"><strong>10 篇</strong><span>当前教程</span></div>
@@ -280,6 +381,68 @@ var _hmt = _hmt || [];
         </div>
       </aside>
     </div>
+  </section>
+
+  <div class="section-title">
+    <h2>按你的情况选择</h2>
+    <p>先选问题，再决定是看教程、直接开通，还是复制微信问人工。</p>
+  </div>
+
+  <section class="path-grid" aria-label="按场景选择教程">
+    <article class="path-card">
+      <span class="tag pay">无境外卡</span>
+      <h3>我没有境外卡</h3>
+      <p>先看官方网页、应用商店和第三方协助路径的区别。</p>
+      <div class="path-actions">
+        <a class="mini-button" href="/blog/meiyou-jingwaika-gpt-chongzhi.html">看教程</a>
+        <a class="mini-button secondary" href="/">直接开通</a>
+      </div>
+    </article>
+    <article class="path-card">
+      <span class="tag">微信付款</span>
+      <h3>我想用微信付款</h3>
+      <p>看微信付款发生在哪个环节，以及付款后怎么验收。</p>
+      <div class="path-actions">
+        <a class="mini-button" href="/blog/chatgpt-plus-weixin-chongzhi.html">看教程</a>
+        <button class="mini-button secondary js-copy-wx" type="button">先问人工</button>
+      </div>
+    </article>
+    <article class="path-card">
+      <span class="tag">支付宝</span>
+      <h3>我想用支付宝付款</h3>
+      <p>官方网页通常没有支付宝直付入口，先分清第三方协助流程。</p>
+      <div class="path-actions">
+        <a class="mini-button" href="/blog/chatgpt-plus-zhifubao-chongzhi.html">看教程</a>
+        <a class="mini-button secondary" href="/">直接开通</a>
+      </div>
+    </article>
+    <article class="path-card">
+      <span class="tag account">账号安全</span>
+      <h3>我怕账号不安全</h3>
+      <p>先确认账号归属、敏感信息边界、异常低价和售后规则。</p>
+      <div class="path-actions">
+        <a class="mini-button" href="/blog/security-risk-guide.html">看风险指南</a>
+        <button class="mini-button secondary js-copy-wx" type="button">复制微信</button>
+      </div>
+    </article>
+    <article class="path-card">
+      <span class="tag">Plus / Pro</span>
+      <h3>我不知道选 Plus 还是 Pro</h3>
+      <p>按使用频率、账号订阅状态、预算和发票对公需求判断。</p>
+      <div class="path-actions">
+        <a class="mini-button" href="/blog/chatgpt-plus-pro-zenme-xuan.html">看对比</a>
+        <button class="mini-button secondary js-copy-wx" type="button">咨询 Pro</button>
+      </div>
+    </article>
+    <article class="path-card">
+      <span class="tag pay">直接开通</span>
+      <h3>我不想看教程，想直接开通</h3>
+      <p>Plus ¥188 / 30天，开通到自己的账号；Pro 先人工确认。</p>
+      <div class="path-actions">
+        <a class="mini-button" href="/">回首页开通</a>
+        <button class="mini-button secondary js-copy-wx" type="button">复制微信</button>
+      </div>
+    </article>
   </section>
 
   <div class="section-title">
@@ -380,14 +543,24 @@ var _hmt = _hmt || [];
   <p class="empty" id="emptyState">没有找到匹配文章。可以换一个关键词，比如“支付宝”“Pro”“无境外卡”。</p>
   <p class="footer-note">GPlus.cc 为第三方服务网站，并非 OpenAI 或 ChatGPT 官方网站。页面中提及的产品名称仅用于说明适配对象。</p>
 </main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (function() {
+  var WX_ID = 'jiage01888';
   var active = 'all';
   var search = document.getElementById('articleSearch');
   var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
   var links = Array.prototype.slice.call(document.querySelectorAll('.article-link'));
   var empty = document.getElementById('emptyState');
+  var toast = document.getElementById('toast');
+
+  function showToast(text) {
+    if (!toast) return;
+    toast.textContent = text;
+    toast.classList.add('show');
+    window.setTimeout(function(){ toast.classList.remove('show'); }, 1600);
+  }
 
   function normalize(text) {
     return (text || '').toLowerCase().replace(/\s+/g, '');
@@ -419,6 +592,30 @@ var _hmt = _hmt || [];
   });
 
   if (search) search.addEventListener('input', applyFilter);
+
+  document.querySelectorAll('.js-copy-wx').forEach(function(button) {
+    button.addEventListener('click', async function() {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(WX_ID);
+        } else {
+          var input = document.createElement('textarea');
+          input.value = WX_ID;
+          input.setAttribute('readonly', '');
+          input.style.position = 'fixed';
+          input.style.left = '-9999px';
+          document.body.appendChild(input);
+          input.focus();
+          input.select();
+          document.execCommand('copy');
+          input.remove();
+        }
+        showToast('已复制微信：' + WX_ID);
+      } catch (error) {
+        showToast('请手动添加微信：' + WX_ID);
+      }
+    });
+  });
 })();
 </script>
 </body>

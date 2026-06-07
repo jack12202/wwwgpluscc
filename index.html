@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="baidu-site-verification" content="codeva-rBjunIBtXc">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GPT充值，5分钟完成 | ChatGPT Plus / Pro 开通升级 | GPlus.cc</title>
-<meta name="description" content="GPlus.cc 支持 ChatGPT Plus / Pro 开通升级协助，充值到用户自己的账号。GPT充值，5分钟完成；无需账号密码、无需信用卡，支持微信/支付宝、自助激活、人工客服、30天质保和发票/对公咨询。">
+<title>ChatGPT Plus 开通到你的账号，¥188 / 30天 | GPlus.cc</title>
+<meta name="description" content="GPlus.cc 支持 ChatGPT Plus / Pro 开通升级协助，开通到用户自己的账号。Plus ¥188/30天，微信/支付宝可付款，无需账号密码、无需海外信用卡，支持自助激活、人工客服、30天质保和发票/对公咨询。">
 <link rel="canonical" href="https://www.gplus.cc/">
-<meta property="og:title" content="GPT充值，5分钟完成 | 嘉哥AI / 嘉哥GPT">
-<meta property="og:description" content="ChatGPT Plus / Pro 开通升级到你自己的账号。无需提供账号密码，支持微信/支付宝，通常大部分情况下都在5分钟内完成。">
+<meta property="og:title" content="ChatGPT Plus 开通到你的账号，¥188 / 30天 | GPlus.cc">
+<meta property="og:description" content="ChatGPT Plus / Pro 开通升级到你自己的账号。无需提供账号密码，支持微信/支付宝，大部分订单5分钟内完成，异常人工处理。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.gplus.cc/">
 <style>
@@ -388,6 +388,38 @@
 
   .plan-card p { margin: 0; color: var(--muted); font-size: 13px; }
 
+  .plan-tag {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 7px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    color: #065f46;
+    background: var(--mint);
+    border: 1px solid rgba(16, 185, 129, .2);
+    font-size: 12px;
+    font-weight: 950;
+  }
+
+  .plan-note {
+    margin-top: 6px !important;
+    color: #334155 !important;
+    font-weight: 750;
+  }
+
+  .plan-side {
+    display: grid;
+    gap: 9px;
+    justify-items: end;
+  }
+
+  .plan-btn {
+    min-height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
   .price {
     text-align: right;
     color: var(--ink);
@@ -420,6 +452,28 @@
     font-size: 13px;
   }
 
+  .price-explainer {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    color: #334155;
+    font-size: 13px;
+  }
+
+  .price-explainer summary {
+    cursor: pointer;
+    padding: 12px 13px;
+    color: var(--blue-2);
+    font-weight: 950;
+  }
+
+  .price-explainer p {
+    margin: 0;
+    padding: 0 13px 13px;
+    color: var(--muted);
+  }
+
   .section {
     margin-top: 22px;
     padding: clamp(22px, 3.4vw, 34px);
@@ -450,6 +504,9 @@
   .flow { grid-template-columns: repeat(4, 1fr); }
   .trust { grid-template-columns: repeat(4, 1fr); }
   .guides { grid-template-columns: repeat(4, 1fr); }
+  .proof-summary { grid-template-columns: repeat(3, 1fr); }
+  .feedback-grid { grid-template-columns: repeat(3, 1fr); }
+  .promise-grid { grid-template-columns: repeat(2, 1fr); }
 
   .card {
     padding: 18px;
@@ -468,6 +525,209 @@
     margin: 0;
     color: var(--muted);
     font-size: 14px;
+  }
+
+  .proof-card strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 18px;
+  }
+
+  .delivery-row {
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    color: #334155;
+    font-size: 14px;
+  }
+
+  .delivery-row:last-child { border-bottom: 0; }
+  .delivery-row span:last-child { color: #065f46; font-weight: 950; }
+
+  .feedback-shot {
+    margin: 0;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(15, 35, 55, .08);
+  }
+
+  .feedback-shot button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    text-align: inherit;
+    font: inherit;
+  }
+
+  .feedback-shot img {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 14px;
+  }
+
+  .feedback-shot span {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .feedback-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .feedback-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(15, 32, 51, .72);
+    backdrop-filter: blur(8px);
+  }
+
+  .feedback-modal.is-open { display: flex; }
+
+  .feedback-dialog {
+    position: relative;
+    width: min(920px, 100%);
+    max-height: min(90vh, 880px);
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 28px 70px rgba(15, 32, 51, .3);
+  }
+
+  .feedback-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .feedback-modal-head h3 {
+    margin: 0;
+    font-size: 19px;
+  }
+
+  .feedback-close,
+  .feedback-nav {
+    border: 1px solid var(--line);
+    cursor: pointer;
+    display: inline-grid;
+    place-items: center;
+    color: var(--ink);
+    background: #fff;
+    font: inherit;
+    font-weight: 950;
+  }
+
+  .feedback-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .feedback-stage {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .feedback-nav {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    font-size: 24px;
+  }
+
+  .feedback-image-wrap {
+    min-height: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--paper-soft);
+    overflow: hidden;
+  }
+
+  .feedback-image-wrap img {
+    display: block;
+    max-width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+  }
+
+  .feedback-caption {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .feedback-caption strong {
+    display: block;
+    color: var(--ink);
+    font-size: 15px;
+  }
+
+  .promise-col {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: #fff;
+    padding: 20px;
+  }
+
+  .promise-col h3 { margin-bottom: 12px; }
+
+  .check-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .check-list li {
+    position: relative;
+    padding-left: 22px;
+    margin: 9px 0;
+  }
+
+  .check-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .68em;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, .12);
   }
 
   .card-label {
@@ -627,7 +887,7 @@
     .top-actions { min-width: 0; width: 100%; justify-content: flex-start; }
     .nav { justify-content: flex-start; }
     .hero { grid-template-columns: 1fr; padding-top: 26px; }
-    .service-bar, .decision, .flow, .trust, .guides, .brand-box { grid-template-columns: 1fr 1fr; }
+    .service-bar, .decision, .flow, .trust, .guides, .brand-box, .proof-summary, .feedback-grid, .promise-grid { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 640px) {
@@ -643,14 +903,20 @@
     h1 { font-size: clamp(31px, 9.4vw, 42px); line-height: 1.08; }
     .lead { font-size: 16px; }
     .hero-actions .btn { width: 100%; }
-    .service-bar, .decision, .flow, .trust, .guides, .brand-box { grid-template-columns: 1fr; }
+    .service-bar, .decision, .flow, .trust, .guides, .brand-box, .proof-summary, .feedback-grid, .promise-grid { grid-template-columns: 1fr; }
     .checkout-actions { grid-template-columns: 1fr; }
     .plan-card { grid-template-columns: 1fr; }
+    .plan-side { justify-items: start; }
     .price { text-align: left; }
+    .delivery-row { grid-template-columns: 1fr; gap: 3px; }
+    .feedback-shot img { height: auto; }
     .section-head { display: block; }
     .floating-cta { display: block; }
     .floating-actions { margin-top: 10px; }
     .floating-actions .btn { flex: 1; padding: 0 12px; }
+    .feedback-stage { grid-template-columns: 1fr; }
+    .feedback-nav { width: 100%; height: 38px; }
+    .feedback-caption { display: block; }
   }
 </style>
 <script type="application/ld+json">
@@ -660,10 +926,10 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "嘉哥AI 支持 ChatGPT Plus 和 Pro 吗？",
+      "name": "GPlus.cc 支持 ChatGPT Plus 和 Pro 吗？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "支持 ChatGPT Plus / Pro 开通升级咨询。Plus 可按页面指引自助处理，Pro 建议先联系人工确认账号状态和当前订阅。"
+        "text": "支持 ChatGPT Plus / Pro 开通升级咨询。Plus 可按页面指引自助处理，Pro 100 / Pro 200 建议先联系人工确认账号状态、当前订阅和发票对公需求。"
       }
     },
     {
@@ -676,10 +942,26 @@
     },
     {
       "@type": "Question",
+      "name": "为什么 Plus 不是官方 $20 直接折算？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpenAI Plus 官方价为 $20/月。GPlus.cc 页面价格包含国内付款支持、自助激活系统、账号状态判断、稳定处理通道和 30 天售后。"
+      }
+    },
+    {
+      "@type": "Question",
       "name": "掉订阅或异常怎么处理？",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "月度服务按30天质保口径处理。如出现掉订阅或异常，会按实际使用天数和订单规则处理退款或补差方案。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "GPlus.cc 是 OpenAI 官方官网吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不是。GPlus.cc 是第三方数字服务网站，与 OpenAI 或 ChatGPT 官方无隶属关系。页面中提及的产品名称仅用于说明服务适配对象。"
       }
     }
   ]
@@ -697,7 +979,7 @@ var _hmt = _hmt || [];
 </head>
 <body>
 <div class="page">
-  <div class="notice"><span class="notice-dot"></span><span>客服在线 9:00-23:00 ｜ Plus 可自助开通 ｜ Pro / 发票 / 对公先咨询</span></div>
+  <div class="notice"><span class="notice-dot"></span><span>客服微信 jiage01888 ｜ Plus 可自助开通 ｜ Pro / 发票 / 对公先咨询</span></div>
 
   <header class="topbar">
     <a class="brand" href="/" aria-label="嘉哥AI GPlus 首页">
@@ -715,20 +997,20 @@ var _hmt = _hmt || [];
     </nav>
     <div class="top-actions">
       <button class="btn btn-ghost js-copy-wx" type="button">复制微信</button>
-      <button class="btn btn-green js-buy" type="button">立即开通</button>
+      <button class="btn btn-green js-buy" type="button">开通 Plus ¥188</button>
     </div>
   </header>
 
   <main>
     <section class="hero" aria-label="嘉哥AI ChatGPT Plus Pro 开通升级">
       <div class="hero-main">
-        <span class="kicker">无需账号密码 · 无需信用卡</span>
-        <h1>GPT充值，5分钟完成</h1>
-        <p class="lead">开通到你自己的账号，微信 / 支付宝可付款。无需信用卡，不用给密码。</p>
-        <p class="service-note">Plus 可自助激活；Pro / 其他需求先问人工。大部分订单5分钟内完成，特殊情况人工处理。</p>
+        <span class="kicker">自己的账号 · 无需密码 · 微信/支付宝</span>
+        <h1>ChatGPT Plus 开通到你的账号，¥188 / 30天</h1>
+        <p class="lead">微信 / 支付宝可付款，无需海外信用卡，不用提供账号密码。Plus 可自助激活；Pro、发票、对公、账号异常先人工确认。</p>
+        <p class="service-note">2300+ 用户服务经验 ｜ 30天质保 ｜ Plus 不是共享号，优先开到自己的账号 ｜ 大部分订单5分钟内完成，异常人工处理。</p>
         <div class="hero-actions">
-          <button class="btn btn-green js-buy" type="button">立即开通 Plus ¥188/月</button>
-          <button class="btn btn-primary js-copy-wx" type="button">先问人工客服</button>
+          <button class="btn btn-green js-buy" type="button">立即开通 Plus ¥188 / 30天</button>
+          <button class="btn btn-primary js-copy-wx" type="button">复制微信，先问人工</button>
           <a class="btn btn-ghost" href="https://ow800.com/auto" target="_blank" rel="noopener">已购买去激活</a>
         </div>
         <div class="service-bar" aria-label="核心信任点">
@@ -751,31 +1033,50 @@ var _hmt = _hmt || [];
         <div class="plan-list">
           <article class="plan-card featured">
             <div>
-              <h3>ChatGPT Plus 月度开通</h3>
-              <p>日常写作、学习、办公、图片生成和轻度代码。</p>
+              <span class="plan-tag">推荐新手先选</span>
+              <h3>ChatGPT Plus</h3>
+              <p>适合：写作、翻译、学习、办公、轻度代码、图片生成。</p>
+              <p class="plan-note">自助激活，开到自己的账号，无需提供账号密码。</p>
             </div>
-            <div class="price">¥188 <small>/ 30天</small></div>
+            <div class="plan-side">
+              <div class="price">¥188 <small>/ 30天</small></div>
+              <button class="btn btn-green plan-btn js-buy" type="button">立即开通 Plus</button>
+            </div>
           </article>
           <article class="plan-card">
             <div>
+              <span class="plan-tag">高频个人</span>
               <h3>ChatGPT Pro 100</h3>
-              <p>进阶高频使用，先确认账号订阅状态。</p>
+              <p>适合：Plus 经常不够用、长文档、复杂任务、代码开发。</p>
+              <p class="plan-note">先确认账号订阅状态，再安排开通。</p>
             </div>
-            <div class="price">¥880 <small>/ 30天</small></div>
+            <div class="plan-side">
+              <div class="price">¥880 <small>/ 30天</small></div>
+              <button class="btn btn-primary plan-btn js-copy-wx" type="button">复制微信咨询 Pro</button>
+            </div>
           </article>
           <article class="plan-card">
             <div>
+              <span class="plan-tag">重度 / 团队</span>
               <h3>ChatGPT Pro 200</h3>
-              <p>重度研究、开发、内容生产或团队采购。</p>
+              <p>适合：研究、开发、内容生产、企业采购、发票对公。</p>
+              <p class="plan-note">发票 / 对公 / iOS 订阅先人工确认。</p>
             </div>
-            <div class="price">¥1650 <small>/ 30天</small></div>
+            <div class="plan-side">
+              <div class="price">¥1650 <small>/ 30天</small></div>
+              <button class="btn btn-primary plan-btn js-copy-wx" type="button">先问人工</button>
+            </div>
           </article>
         </div>
         <div class="checkout-actions">
           <button class="btn btn-green js-buy" type="button">立即开通 Plus</button>
           <button class="btn btn-primary js-copy-wx" type="button">先问人工</button>
         </div>
-        <p class="manual-note">客服微信：<strong>jiage01888</strong>。Pro、Claude、Grok、发票、对公、账号异常，建议咨询后再下单。</p>
+        <p class="manual-note">客服微信：<strong>jiage01888</strong>。OpenAI 官方说明里，Pro $100 与 $200 的核心区别是相对 Plus 的使用额度倍数，$100 为 5x，$200 为 20x；本站 Pro 订单建议先人工确认账号状态。<a href="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans" target="_blank" rel="noopener">查看 OpenAI 帮助中心</a></p>
+        <details class="price-explainer">
+          <summary>为什么不是官方价？</summary>
+          <p>OpenAI Plus 官方价为 $20/月，人民币成本会受汇率和付款路径影响。本站价格包含国内付款支持、自助激活系统、稳定处理通道、账号状态判断和 30 天售后。如果你只追求最低价，不建议直接下单；如果你更在意开到自己的账号、少暴露敏感信息、异常有人处理，可以选择这里。<a href="https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus" target="_blank" rel="noopener">查看 OpenAI Plus 说明</a></p>
+        </details>
       </aside>
     </section>
 
@@ -797,29 +1098,85 @@ var _hmt = _hmt || [];
       <div class="section-head">
         <div>
           <h2>付款后按步骤完成激活。</h2>
-          <p class="section-desc">已购买用户可直接进入激活平台，按提示完成开通并回到账号里确认状态。</p>
+          <p class="section-desc">流程尽量让新手少猜：什么能直接下单、付款后要留什么、在哪里激活、怎么验收。</p>
         </div>
       </div>
       <div class="grid flow">
-        <article class="card"><span class="step-num">1</span><h3>选择方案</h3><p>Plus 可直接下单；Pro 和发票/对公先人工确认。</p></article>
-        <article class="card"><span class="step-num">2</span><h3>完成付款</h3><p>支持微信/支付宝，保留下单信息和付款凭证。</p></article>
-        <article class="card"><span class="step-num">3</span><h3>前往激活平台</h3><p>进入激活平台，按提示填写并提交开通信息。</p></article>
-        <article class="card"><span class="step-num">4</span><h3>确认到账</h3><p>回到自己的 ChatGPT 账号查看 Plus / Pro 状态。</p></article>
+        <article class="card"><span class="step-num">1</span><h3>选择套餐</h3><p>Plus 直接下单；Pro、发票、对公、iOS 订阅先联系人工。</p></article>
+        <article class="card"><span class="step-num">2</span><h3>微信 / 支付宝付款</h3><p>保留订单号和付款凭证，付款后不要重复下单。</p></article>
+        <article class="card"><span class="step-num">3</span><h3>进入自助激活系统</h3><p>按页面提示操作，不需要提供账号密码或信用卡。</p></article>
+        <article class="card"><span class="step-num">4</span><h3>回到账号验收</h3><p>确认 Plus / Pro 状态，如未生效联系人工处理。</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="proof">
+      <div class="section-head">
+        <div>
+          <h2>真实用户反馈，重点看信任和到账。</h2>
+          <p class="section-desc">展示用户真实沟通截图：有人到期后继续找嘉哥，有人确认到账，也有人明确不需要提供账号密码。隐私信息已打码处理。</p>
+        </div>
+      </div>
+      <div class="grid proof-summary">
+        <article class="card proof-card"><strong>主动续费</strong><p>用户到期后表示“主打一个信任”，下周继续找嘉哥处理。</p></article>
+        <article class="card proof-card"><strong>到账确认</strong><p>用户确认开通完成，并反馈“下个月继续”“多谢”。</p></article>
+        <article class="card proof-card"><strong>无需密码</strong><p>用户询问是否需要账号密码，实际使用激活卡自助开通到自己的账号。</p></article>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <div class="delivery-row"><span>信任表达</span><span>用户到期后主动约定继续处理</span><span>可回访</span></div>
+        <div class="delivery-row"><span>到账验收</span><span>开通后回到账号确认 Plus / Pro 状态</span><span>已确认</span></div>
+        <div class="delivery-row"><span>信息边界</span><span>使用激活卡和自助系统，不索要账号密码</span><span>更安心</span></div>
+      </div>
+      <div class="grid feedback-grid" style="margin-top:14px">
+        <figure class="feedback-shot">
+          <button class="js-feedback-open" type="button" data-feedback-index="0">
+            <img src="assets/feedback/feedback-trust.jpg" alt="用户到期后表示信任并约定继续找嘉哥处理" loading="lazy">
+            <span>反馈截图：主动续费，主打信任</span>
+          </button>
+        </figure>
+        <figure class="feedback-shot">
+          <button class="js-feedback-open" type="button" data-feedback-index="1">
+            <img src="assets/feedback/feedback-delivered.jpg" alt="用户确认到账并表示下个月继续" loading="lazy">
+            <span>反馈截图：已到账，下个月继续</span>
+          </button>
+        </figure>
+        <figure class="feedback-shot">
+          <button class="js-feedback-open" type="button" data-feedback-index="2">
+            <img src="assets/feedback/feedback-no-password.jpg" alt="用户询问账号密码，说明无需密码并使用激活卡自助开通" loading="lazy">
+            <span>反馈截图：无需账号密码，激活卡自助开通</span>
+          </button>
+        </figure>
+      </div>
+      <div class="feedback-actions">
+        <button class="btn btn-ghost js-feedback-open" type="button" data-feedback-index="3">更多用户反馈</button>
       </div>
     </section>
 
     <section class="section" id="trust">
       <div class="section-head">
         <div>
-          <h2>开通前，先了解售后和账号安全。</h2>
-          <p class="section-desc">下单前可以先确认账号归属、需要提供的信息、订单凭证和异常处理方式。</p>
+          <h2>售后保障要有承诺，也要有边界。</h2>
+          <p class="section-desc">充值类服务最怕说不清。这里把能承诺的事和需要你提前知道的事分开写。</p>
         </div>
       </div>
-      <div class="grid trust">
-        <article class="card"><span class="card-label">账号归属</span><h3>充值到自己的账号</h3><p>优先开通到你已有的 ChatGPT 账号，避免共享号带来的不确定性。</p></article>
-        <article class="card"><span class="card-label">信息边界</span><h3>无需账号密码</h3><p>开通时不需要提供账号密码，也不需要用户提供信用卡信息。</p></article>
-        <article class="card"><span class="card-label">质保规则</span><h3>30天售后说明</h3><p>服务期内如遇异常，按已使用天数和订单规则处理。</p></article>
-        <article class="card"><span class="card-label">企业需求</span><h3>发票/对公可咨询</h3><p>普通电子发票、对公付款、税点和主体需以人工确认为准。</p></article>
+      <div class="grid promise-grid">
+        <article class="promise-col">
+          <h3>我们承诺</h3>
+          <ul class="check-list">
+            <li>30 天服务期内异常可处理。</li>
+            <li>Plus 开到你自己的 ChatGPT 账号。</li>
+            <li>不要求提供账号密码或信用卡信息。</li>
+            <li>支持订单号和付款凭证核对。</li>
+          </ul>
+        </article>
+        <article class="promise-col">
+          <h3>需要你知道</h3>
+          <ul class="check-list">
+            <li>付款后不要重复下单，先保留凭证核对。</li>
+            <li>已有 iOS Plus 订阅升级 Pro 前先确认。</li>
+            <li>发票 / 对公 / 企业采购以人工确认为准。</li>
+            <li>GPlus.cc 不是 OpenAI 官方网站。</li>
+          </ul>
+        </article>
       </div>
     </section>
 
@@ -846,7 +1203,7 @@ var _hmt = _hmt || [];
     <section class="section brand-box">
       <div>
         <h2>第一次看到嘉哥，可以先确认这几点。</h2>
-        <p class="section-desc">会员开通到你自己的账号，不是共享号或成品号；无需提供账号密码，也无需准备海外信用卡。下单前建议核对网站、客服微信和订单页面。</p>
+        <p class="section-desc">Plus 开通到你自己的账号，不是共享号；无需提供账号密码，也无需准备海外信用卡。下单前建议核对网站、客服微信和订单页面。</p>
       </div>
       <div class="card">
         <h3>下单前怎么确认？</h3>
@@ -870,8 +1227,16 @@ var _hmt = _hmt || [];
         <p>建议先联系人工确认账号状态，尤其是当前仍有 iOS Plus 订阅的账号，需要等订阅到期后再处理 Pro。</p>
       </details>
       <details>
+        <summary>为什么不是官方价？</summary>
+        <p>OpenAI Plus 官方价为 $20/月。本站价格包含国内付款支持、自助激活系统、稳定处理通道、账号状态判断和 30 天售后。如果你只追求最低价，不建议直接下单。</p>
+      </details>
+      <details>
         <summary>需要提供账号密码或信用卡吗？</summary>
         <p>不需要提供账号密码，也不需要提供信用卡信息。按页面指引完成开通即可；如遇特殊情况，先联系人工确认。</p>
+      </details>
+      <details>
+        <summary>和共享号、成品号有什么区别？</summary>
+        <p>Plus 开通优先处理到你自己的 ChatGPT 账号，账号归属和历史记录都更清楚；共享号是多人共用，不适合作为长期方案。</p>
       </details>
       <details>
         <summary>开通后出现异常怎么办？</summary>
@@ -892,8 +1257,8 @@ var _hmt = _hmt || [];
 
 <div class="floating-cta" aria-label="底部开通入口">
   <div>
-    <strong>GPT充值，5分钟完成 · Plus ¥188/月起</strong>
-    <span>特殊情况可联系人工处理；Pro、Claude、发票/对公先复制微信咨询。</span>
+    <strong>Plus ¥188 / 30天 · 开通到你的账号</strong>
+    <span>无需密码，微信/支付宝可付款；Pro、发票/对公先复制微信咨询。</span>
   </div>
   <div class="floating-actions">
     <button class="btn btn-ghost js-copy-wx" type="button">复制微信</button>
@@ -901,6 +1266,28 @@ var _hmt = _hmt || [];
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="feedback-modal" id="feedbackModal" role="dialog" aria-modal="true" aria-label="用户反馈截图查看器">
+  <div class="feedback-dialog">
+    <div class="feedback-modal-head">
+      <h3 id="feedbackTitle">用户反馈</h3>
+      <button class="feedback-close" id="feedbackClose" type="button" aria-label="关闭反馈截图">×</button>
+    </div>
+    <div class="feedback-stage">
+      <button class="feedback-nav" id="feedbackPrev" type="button" aria-label="上一张">‹</button>
+      <div class="feedback-image-wrap">
+        <img id="feedbackImage" src="assets/feedback/feedback-trust.jpg" alt="用户反馈截图" loading="lazy">
+      </div>
+      <button class="feedback-nav" id="feedbackNext" type="button" aria-label="下一张">›</button>
+    </div>
+    <div class="feedback-caption">
+      <div>
+        <strong id="feedbackCaptionTitle">主动续费，主打信任</strong>
+        <span id="feedbackCaptionText">用户到期后表示“主打一个信任”，约定下周继续找嘉哥处理。</span>
+      </div>
+      <span id="feedbackCount">1 / 9</span>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -908,6 +1295,72 @@ var _hmt = _hmt || [];
   const WX_ID = 'jiage01888';
   const toast = document.getElementById('toast');
   const floatingCta = document.querySelector('.floating-cta');
+  const feedbackModal = document.getElementById('feedbackModal');
+  const feedbackImage = document.getElementById('feedbackImage');
+  const feedbackTitle = document.getElementById('feedbackTitle');
+  const feedbackCaptionTitle = document.getElementById('feedbackCaptionTitle');
+  const feedbackCaptionText = document.getElementById('feedbackCaptionText');
+  const feedbackCount = document.getElementById('feedbackCount');
+  const feedbackClose = document.getElementById('feedbackClose');
+  const feedbackPrev = document.getElementById('feedbackPrev');
+  const feedbackNext = document.getElementById('feedbackNext');
+  const feedbackItems = [
+    {
+      src: 'assets/feedback/feedback-trust.jpg',
+      title: '主动续费，主打信任',
+      text: '用户到期后表示“主打一个信任”，约定下周继续找嘉哥处理。',
+      alt: '用户到期后表示信任并约定继续找嘉哥处理'
+    },
+    {
+      src: 'assets/feedback/feedback-delivered.jpg',
+      title: '已到账，下个月继续',
+      text: '用户确认开通完成，反馈“下个月继续”“多谢”。',
+      alt: '用户确认到账并表示下个月继续'
+    },
+    {
+      src: 'assets/feedback/feedback-no-password.jpg',
+      title: '无需账号密码，激活卡自助开通',
+      text: '用户询问是否需要账号密码，实际通过激活卡和自助充值系统完成。',
+      alt: '用户询问账号密码，说明无需密码并使用激活卡自助开通'
+    },
+    {
+      src: '客户案例 1.jpg',
+      title: '更多用户反馈 1',
+      text: '历史用户反馈截图，隐私信息已打码。',
+      alt: 'GPlus.cc 历史用户反馈截图 1'
+    },
+    {
+      src: '客户案例 2.jpg',
+      title: '更多用户反馈 2',
+      text: '历史用户反馈截图，隐私信息已打码。',
+      alt: 'GPlus.cc 历史用户反馈截图 2'
+    },
+    {
+      src: '客户案例 3.jpg',
+      title: '更多用户反馈 3',
+      text: '历史用户反馈截图，隐私信息已打码。',
+      alt: 'GPlus.cc 历史用户反馈截图 3'
+    },
+    {
+      src: '客户案例 4.jpg',
+      title: '更多用户反馈 4',
+      text: '历史用户反馈截图，隐私信息已打码。',
+      alt: 'GPlus.cc 历史用户反馈截图 4'
+    },
+    {
+      src: '客户案例 5.jpg',
+      title: '更多用户反馈 5',
+      text: '历史用户反馈截图，隐私信息已打码。',
+      alt: 'GPlus.cc 历史用户反馈截图 5'
+    },
+    {
+      src: '客户案例 6.jpg',
+      title: '更多用户反馈 6',
+      text: '历史用户反馈截图，隐私信息已打码。',
+      alt: 'GPlus.cc 历史用户反馈截图 6'
+    }
+  ];
+  let feedbackIndex = 0;
 
   function showToast(text) {
     if (!toast) return;
@@ -918,6 +1371,37 @@ var _hmt = _hmt || [];
 
   function openNew(url) {
     window.open(url, '_blank', 'noopener');
+  }
+
+  function renderFeedback() {
+    const item = feedbackItems[feedbackIndex];
+    if (!item || !feedbackImage) return;
+    feedbackImage.src = item.src;
+    feedbackImage.alt = item.alt;
+    feedbackTitle.textContent = '用户反馈';
+    feedbackCaptionTitle.textContent = item.title;
+    feedbackCaptionText.textContent = item.text;
+    feedbackCount.textContent = (feedbackIndex + 1) + ' / ' + feedbackItems.length;
+  }
+
+  function openFeedback(index) {
+    if (!feedbackModal) return;
+    feedbackIndex = Number.isFinite(index) ? index : 0;
+    if (feedbackIndex < 0 || feedbackIndex >= feedbackItems.length) feedbackIndex = 0;
+    renderFeedback();
+    feedbackModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFeedback() {
+    if (!feedbackModal) return;
+    feedbackModal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function moveFeedback(step) {
+    feedbackIndex = (feedbackIndex + step + feedbackItems.length) % feedbackItems.length;
+    renderFeedback();
   }
 
   async function copyWx() {
@@ -959,6 +1443,29 @@ var _hmt = _hmt || [];
       event.preventDefault();
       copyWx();
     });
+  });
+
+  document.querySelectorAll('.js-feedback-open').forEach(function(btn){
+    btn.addEventListener('click', function(event){
+      event.preventDefault();
+      openFeedback(Number(btn.getAttribute('data-feedback-index') || 0));
+    });
+  });
+
+  if (feedbackClose) feedbackClose.addEventListener('click', closeFeedback);
+  if (feedbackPrev) feedbackPrev.addEventListener('click', function(){ moveFeedback(-1); });
+  if (feedbackNext) feedbackNext.addEventListener('click', function(){ moveFeedback(1); });
+  if (feedbackModal) {
+    feedbackModal.addEventListener('click', function(event){
+      if (event.target === feedbackModal) closeFeedback();
+    });
+  }
+
+  document.addEventListener('keydown', function(event){
+    if (!feedbackModal || !feedbackModal.classList.contains('is-open')) return;
+    if (event.key === 'Escape') closeFeedback();
+    if (event.key === 'ArrowLeft') moveFeedback(-1);
+    if (event.key === 'ArrowRight') moveFeedback(1);
   });
 
   document.querySelectorAll('.js-recharge').forEach(function(btn){
