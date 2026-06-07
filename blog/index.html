@@ -61,6 +61,7 @@
     font-weight: 850;
   }
   .nav-link.primary { color: #fff; background: var(--green); border-color: var(--green); }
+  .nav-link.cta { color: #fff; background: var(--green-dark); border-color: var(--green-dark); box-shadow: 0 12px 28px rgba(15,118,110,.18); }
   .hero {
     margin: 26px 0 18px;
     padding: clamp(20px, 3.4vw, 32px);
@@ -73,7 +74,7 @@
   }
   .hero-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, .72fr);
     gap: 24px;
     align-items: end;
   }
@@ -113,6 +114,53 @@
     font-weight: 900;
   }
   .hero-action.primary { color: #fff; background: var(--green); border-color: var(--green); }
+  .deal-card {
+    padding: 20px;
+    border: 1px solid rgba(15,118,110,.22);
+    border-radius: 22px;
+    background: rgba(255,255,255,.86);
+    box-shadow: 0 20px 54px rgba(37,45,42,.12);
+  }
+  .deal-card h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 1.18;
+  }
+  .deal-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0 0 12px;
+    color: var(--green-dark);
+    font-weight: 950;
+  }
+  .deal-price strong { font-size: 36px; line-height: 1; letter-spacing: -.03em; }
+  .deal-price span { color: var(--muted); font-size: 14px; }
+  .deal-list {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .deal-list li {
+    position: relative;
+    padding-left: 18px;
+  }
+  .deal-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .72em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+  .deal-actions { display: grid; gap: 10px; }
+  .deal-note { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
   .toolbox {
     padding: 16px;
     border-radius: 22px;
@@ -146,6 +194,7 @@
   }
   .filter.is-active { color: #fff; background: var(--green); border-color: var(--green); }
   .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+  .stats.four { grid-template-columns: repeat(4, 1fr); margin: 18px 0 0; }
   .stat { padding: 12px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.7); }
   .stat strong { display: block; font-size: 21px; line-height: 1.1; }
   .stat span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; }
@@ -215,6 +264,32 @@
     pointer-events: none;
   }
   .toast.show { opacity: 1; }
+  .assessment, .trust-panel, .final-check {
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: rgba(255,254,250,.8);
+    box-shadow: var(--shadow);
+    padding: clamp(18px, 3vw, 26px);
+  }
+  .question-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .question-card {
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255,255,255,.72);
+  }
+  .question-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .question-card p { margin: 0; color: var(--muted); font-size: 14px; }
+  .result-actions, .trust-actions, .final-actions, .group-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
   .section-title {
     display: flex;
     justify-content: space-between;
@@ -230,8 +305,8 @@
     letter-spacing: -.025em;
   }
   .section-title p { margin: 0; color: var(--muted); max-width: 440px; }
-  .starter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .starter-card, .article-row {
+  .starter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .starter-card, .article-row, .article-group {
     border: 1px solid var(--line);
     background: rgba(255,254,250,.78);
     box-shadow: var(--shadow);
@@ -240,7 +315,7 @@
   }
   .starter-card:hover, .article-row:hover { transform: translateY(-3px); border-color: rgba(15,118,110,.42); box-shadow: 0 24px 64px rgba(37,45,42,.14); }
   .starter-card { min-height: 230px; padding: 20px; border-radius: 24px; display: flex; flex-direction: column; }
-  .starter-card h3 { margin: 14px 0 9px; font-size: 24px; line-height: 1.18; letter-spacing: -.02em; }
+  .starter-card h3 { margin: 14px 0 9px; font-size: 21px; line-height: 1.18; letter-spacing: -.02em; }
   .starter-card p, .article-row p { margin: 0; color: var(--muted); }
   .starter-card .read { margin-top: auto; padding-top: 20px; color: var(--green-dark); font-weight: 950; }
   .tag {
@@ -257,7 +332,23 @@
   }
   .tag.pay { color: #73460b; background: rgba(183,121,31,.14); }
   .tag.account { color: #1f4d7d; background: rgba(39,86,138,.12); }
-  .article-list { display: grid; gap: 10px; }
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .trust-card {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255,255,255,.78);
+  }
+  .trust-card h3 { margin: 0 0 8px; font-size: 20px; }
+  .trust-card p { margin: 0; color: var(--muted); }
+  .article-list { display: grid; gap: 16px; }
+  .article-group {
+    padding: 18px;
+    border-radius: 22px;
+    text-decoration: none;
+  }
+  .article-group h3 { margin: 0 0 12px; font-size: 22px; }
+  .article-group-list { display: grid; gap: 10px; }
   .article-row {
     display: grid;
     grid-template-columns: 70px minmax(0, 1fr) auto;
@@ -281,19 +372,48 @@
   .article-row h3 { margin: 8px 0 5px; font-size: 22px; line-height: 1.22; letter-spacing: -.015em; }
   .article-row .go { color: var(--green-dark); font-weight: 950; white-space: nowrap; }
   .empty { display: none; margin: 18px 0; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.74); color: var(--muted); }
+  .empty button { margin-top: 10px; }
   .footer-note { margin-top: 30px; color: var(--muted); font-size: 14px; }
+  .check-list {
+    display: grid;
+    gap: 9px;
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+  }
+  .mobile-cta {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 40;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 60px;
+    padding: 8px 10px 8px 13px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 18px 45px rgba(37,45,42,.18);
+  }
+  .mobile-cta strong, .mobile-cta span { display: block; line-height: 1.25; }
+  .mobile-cta span { color: var(--muted); font-size: 12px; }
+  .mobile-cta-actions { display: flex; gap: 8px; }
   @media (max-width: 900px) {
-    .hero-layout, .starter-grid, .path-grid { grid-template-columns: 1fr; }
+    .hero-layout, .starter-grid, .path-grid, .question-grid, .trust-grid, .stats.four { grid-template-columns: 1fr; }
     .section-title { align-items: flex-start; flex-direction: column; }
   }
   @media (max-width: 640px) {
-    .wrap { width: min(100% - 22px, 1120px); padding-top: 14px; }
+    .wrap { width: min(100% - 22px, 1120px); padding-top: 14px; padding-bottom: 104px; }
     .nav { align-items: flex-start; flex-direction: column; }
     .nav-actions { justify-content: flex-start; }
     .stats { grid-template-columns: 1fr; }
     .article-row { grid-template-columns: 1fr; gap: 10px; }
     .article-row .go { margin-top: 4px; }
     .hero, .starter-card, .article-row { border-radius: 22px; }
+    .mobile-cta { display: flex; }
   }
 </style>
 <script type="application/ld+json">
@@ -345,8 +465,11 @@ var _hmt = _hmt || [];
   <nav class="nav">
     <a class="brand" href="/">嘉哥AI / 嘉哥GPT · GPlus.cc<small>ChatGPT Plus / Pro 开通升级指南</small></a>
     <div class="nav-actions">
-      <a class="nav-link" href="/">返回首页</a>
+      <a class="nav-link" href="#paths">教程目录</a>
+      <a class="nav-link" href="/#plans">套餐价格</a>
+      <a class="nav-link" href="/#trust">售后保障</a>
       <a class="nav-link primary" href="https://ow800.com/auto" target="_blank" rel="noopener">已购买去激活</a>
+      <a class="nav-link cta" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">开通 Plus ¥188</a>
     </div>
   </nav>
 
@@ -354,32 +477,49 @@ var _hmt = _hmt || [];
     <div class="hero-layout">
       <div>
         <div class="eyebrow">GPlus Guide</div>
-        <h1>按你的问题，找到 ChatGPT Plus / Pro 开通路径。</h1>
-        <p class="intro">这里整理国内用户最常见的问题：Plus / Pro 怎么选、没有境外卡怎么办、微信支付宝怎么付款、账号安全和售后怎么确认。想直接开通，也可以从这里回到首页。</p>
+        <h1>国内用户开通 ChatGPT Plus / Pro，先按你的问题选路径。</h1>
+        <p class="intro">不确定怎么开通？先按你的情况选一篇。已经确定要开 Plus，可以直接下单；账号异常、Pro、发票、对公，先复制微信问人工。</p>
         <div class="hero-actions">
           <a class="hero-action primary" href="/blog/jiage-ai-gpt.html">先看嘉哥是谁</a>
           <a class="hero-action" href="/blog/chatgpt-plus-pro-zenme-xuan.html">Plus / Pro 怎么选</a>
-          <a class="hero-action" href="/">直接开通 Plus</a>
+          <a class="hero-action" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">直接开通 Plus</a>
         </div>
-        <div class="stats" aria-label="内容概览">
+        <div class="stats four" aria-label="内容概览">
           <div class="stat"><strong>10 篇</strong><span>当前教程</span></div>
           <div class="stat"><strong>5 类</strong><span>付款 / 账号 / 售后</span></div>
           <div class="stat"><strong>2300+</strong><span>累计服务用户</span></div>
+          <div class="stat"><strong>30 天</strong><span>服务期售后口径</span></div>
         </div>
       </div>
 
-      <aside class="toolbox" aria-label="文章筛选">
-        <strong>快速找答案</strong>
-        <input class="search-box" id="articleSearch" type="search" placeholder="搜索：支付宝、微信、Pro、无境外卡、账号安全">
-        <div class="filters" aria-label="文章分类">
-          <button class="filter is-active" type="button" data-filter="all">全部</button>
-          <button class="filter" type="button" data-filter="brand">嘉哥是谁</button>
-          <button class="filter" type="button" data-filter="plan">Plus / Pro</button>
-          <button class="filter" type="button" data-filter="pay">支付方式</button>
-          <button class="filter" type="button" data-filter="account">账号安全</button>
-          <button class="filter" type="button" data-filter="beginner">新手路径</button>
+      <aside class="deal-card" id="plans" aria-label="直接开通 ChatGPT Plus">
+        <h2>已经想好了？直接开通 Plus</h2>
+        <p class="deal-price"><strong>¥188</strong><span>/ 30天</span></p>
+        <ul class="deal-list">
+          <li>开通到自己的 ChatGPT 账号</li>
+          <li>无需提供账号密码</li>
+          <li>微信 / 支付宝可付款</li>
+          <li>30 天质保，异常可核对处理</li>
+        </ul>
+        <div class="deal-actions">
+          <a class="mini-button" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">立即开通 Plus ¥188</a>
+          <button class="mini-button secondary js-copy-wx" type="button">复制微信 jiage01888</button>
         </div>
+        <p class="deal-note">Pro、发票、对公、iOS 订阅或账号异常，先问人工。</p>
       </aside>
+    </div>
+  </section>
+
+  <section class="toolbox" aria-label="文章筛选">
+    <strong>快速找答案</strong>
+    <input class="search-box" id="articleSearch" type="search" placeholder="输入你的问题，比如：支付宝、微信、Pro、无境外卡、账号安全">
+    <div class="filters" aria-label="文章分类">
+      <button class="filter is-active" type="button" data-filter="all">全部</button>
+      <button class="filter" type="button" data-filter="brand">嘉哥是谁</button>
+      <button class="filter" type="button" data-filter="plan">Plus / Pro</button>
+      <button class="filter" type="button" data-filter="pay">支付方式</button>
+      <button class="filter" type="button" data-filter="account">账号安全</button>
+      <button class="filter" type="button" data-filter="beginner">新手路径</button>
     </div>
   </section>
 
@@ -388,47 +528,47 @@ var _hmt = _hmt || [];
     <p>先选问题，再决定是看教程、直接开通，还是复制微信问人工。</p>
   </div>
 
-  <section class="path-grid" aria-label="按场景选择教程">
+  <section class="path-grid" id="paths" aria-label="按场景选择教程">
     <article class="path-card">
       <span class="tag pay">无境外卡</span>
       <h3>我没有境外卡</h3>
-      <p>先看官方网页、应用商店和第三方协助路径的区别。</p>
+      <p>先分清官方网页、应用商店、第三方协助三条路径。</p>
       <div class="path-actions">
-        <a class="mini-button" href="/blog/meiyou-jingwaika-gpt-chongzhi.html">看教程</a>
-        <a class="mini-button secondary" href="/">直接开通</a>
+        <a class="mini-button" href="/blog/meiyou-jingwaika-gpt-chongzhi.html">看无境外卡教程</a>
+        <a class="mini-button secondary" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">直接开通 Plus</a>
       </div>
     </article>
     <article class="path-card">
       <span class="tag">微信付款</span>
       <h3>我想用微信付款</h3>
-      <p>看微信付款发生在哪个环节，以及付款后怎么验收。</p>
+      <p>先看微信付款发生在哪个环节，付款后怎么验收。</p>
       <div class="path-actions">
-        <a class="mini-button" href="/blog/chatgpt-plus-weixin-chongzhi.html">看教程</a>
-        <button class="mini-button secondary js-copy-wx" type="button">先问人工</button>
+        <a class="mini-button" href="/blog/chatgpt-plus-weixin-chongzhi.html">看微信教程</a>
+        <button class="mini-button secondary js-copy-wx" type="button">复制微信咨询</button>
       </div>
     </article>
     <article class="path-card">
       <span class="tag">支付宝</span>
       <h3>我想用支付宝付款</h3>
-      <p>官方网页通常没有支付宝直付入口，先分清第三方协助流程。</p>
+      <p>支付宝通常是向第三方服务方付款，不是 OpenAI 官方网页直连支付宝。</p>
       <div class="path-actions">
-        <a class="mini-button" href="/blog/chatgpt-plus-zhifubao-chongzhi.html">看教程</a>
-        <a class="mini-button secondary" href="/">直接开通</a>
+        <a class="mini-button" href="/blog/chatgpt-plus-zhifubao-chongzhi.html">看支付宝教程</a>
+        <a class="mini-button secondary" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">直接开通 Plus</a>
       </div>
     </article>
     <article class="path-card">
       <span class="tag account">账号安全</span>
       <h3>我怕账号不安全</h3>
-      <p>先确认账号归属、敏感信息边界、异常低价和售后规则。</p>
+      <p>重点确认是否开到自己的账号、是否需要密码、失败怎么处理。</p>
       <div class="path-actions">
         <a class="mini-button" href="/blog/security-risk-guide.html">看风险指南</a>
-        <button class="mini-button secondary js-copy-wx" type="button">复制微信</button>
+        <a class="mini-button secondary" href="/#proof">看用户反馈</a>
       </div>
     </article>
     <article class="path-card">
       <span class="tag">Plus / Pro</span>
       <h3>我不知道选 Plus 还是 Pro</h3>
-      <p>按使用频率、账号订阅状态、预算和发票对公需求判断。</p>
+      <p>日常使用先 Plus，高频/团队/发票/对公再问 Pro。</p>
       <div class="path-actions">
         <a class="mini-button" href="/blog/chatgpt-plus-pro-zenme-xuan.html">看对比</a>
         <button class="mini-button secondary js-copy-wx" type="button">咨询 Pro</button>
@@ -439,110 +579,157 @@ var _hmt = _hmt || [];
       <h3>我不想看教程，想直接开通</h3>
       <p>Plus ¥188 / 30天，开通到自己的账号；Pro 先人工确认。</p>
       <div class="path-actions">
-        <a class="mini-button" href="/">回首页开通</a>
+        <a class="mini-button" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">立即开通 Plus</a>
         <button class="mini-button secondary js-copy-wx" type="button">复制微信</button>
       </div>
     </article>
   </section>
 
   <div class="section-title">
+    <h2>30 秒判断：你适合哪条开通路径？</h2>
+    <p>充值类用户最容易卡在“不确定自己该怎么做”，先用这 4 个问题判断。</p>
+  </div>
+
+  <section class="assessment" aria-label="30 秒开通路径自测">
+    <div class="question-grid">
+      <article class="question-card"><h3>1. 已经有自己的 ChatGPT 账号吗？</h3><p>有账号，优先开通到自己的账号；没有账号，先注册账号，再处理会员。</p></article>
+      <article class="question-card"><h3>2. 只有微信 / 支付宝，没有海外信用卡？</h3><p>可以先看微信/支付宝充值教程，也可以直接选择 Plus 开通。</p></article>
+      <article class="question-card"><h3>3. 第一次开通吗？</h3><p>第一次付费推荐先选 Plus；Plus 经常不够用，再考虑 Pro。</p></article>
+      <article class="question-card"><h3>4. 有 iOS 订阅、发票、对公、账号异常？</h3><p>不要直接下单，先复制微信 jiage01888 确认账号状态。</p></article>
+    </div>
+    <div class="result-actions">
+      <a class="mini-button" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">新手推荐：开通 Plus ¥188 / 30天</a>
+      <button class="mini-button secondary js-copy-wx" type="button">特殊账号 / Pro / 发票对公：复制微信</button>
+    </div>
+  </section>
+
+  <div class="section-title">
     <h2>推荐先看</h2>
-    <p>第一次来不用全读，先按自己的情况选一篇。</p>
+    <p>按购买前的真实阶段排序，先解决“靠谱吗、怎么付、安全吗、买哪个”。</p>
   </div>
 
   <section class="starter-grid" aria-label="推荐文章">
     <a class="starter-card article-link" href="/blog/jiage-ai-gpt.html" data-category="brand" data-search="嘉哥是谁 为什么 2025 GPT充值 野卡 2300 用户 正规渠道 售后">
       <span class="tag">品牌说明</span>
+      <small>第一次看到本站</small>
       <h3>嘉哥是谁？为什么我从 2025 年开始做 GPT 充值</h3>
-      <p>第一次看到嘉哥，先看服务怎么做、价格和售后怎么说。</p>
-      <span class="read">阅读全文</span>
-    </a>
-
-    <a class="starter-card article-link" href="/blog/chatgpt-plus-pro-zenme-xuan.html" data-category="plan" data-search="ChatGPT Plus Pro 怎么选 Pro 100 Pro 200 iOS 订阅 发票 对公 售后">
-      <span class="tag">Plus / Pro</span>
-      <h3>ChatGPT Plus 和 Pro 怎么选？</h3>
-      <p>按使用频率、预算、账号订阅状态和发票对公需求判断。</p>
+      <p>读完你会知道：客服微信、服务方式、价格和售后边界。</p>
       <span class="read">阅读全文</span>
     </a>
 
     <a class="starter-card article-link" href="/blog/meiyou-jingwaika-gpt-chongzhi.html" data-category="pay" data-search="没有境外卡 GPT 充值 Visa Mastercard 银联 应用商店 卡密">
       <span class="tag pay">无境外卡</span>
+      <small>准备开通但没海外卡</small>
       <h3>没有境外卡如何给 GPT 充值？</h3>
-      <p>先分清海外卡、应用商店和第三方卡密路径，少走弯路。</p>
+      <p>读完你会知道：微信/支付宝、应用商店和第三方协助怎么选。</p>
+      <span class="read">阅读全文</span>
+    </a>
+
+    <a class="starter-card article-link" href="/blog/security-risk-guide.html" data-category="account" data-search="ChatGPT Plus 开通 账号风险 账号安全 共享号 敏感信息 低价渠道">
+      <span class="tag account">账号安全</span>
+      <small>担心账号安全</small>
+      <h3>ChatGPT Plus 开通前，哪些账号风险要先避开？</h3>
+      <p>读完你会知道：是否需要密码、是否开到自己账号、付款后怎么验收。</p>
+      <span class="read">阅读全文</span>
+    </a>
+
+    <a class="starter-card article-link" href="/blog/chatgpt-plus-pro-zenme-xuan.html" data-category="plan" data-search="ChatGPT Plus Pro 怎么选 Pro 100 Pro 200 iOS 订阅 发票 对公 售后">
+      <span class="tag">Plus / Pro</span>
+      <small>不知道买哪个套餐</small>
+      <h3>ChatGPT Plus 和 Pro 怎么选？</h3>
+      <p>读完你会知道：日常用 Plus，Pro 100 / Pro 200 为什么要先确认。</p>
       <span class="read">阅读全文</span>
     </a>
   </section>
 
   <div class="section-title">
-    <h2>全部文章</h2>
-    <p>更像一份目录，方便快速扫标题和选择路径。</p>
+    <h2>为什么很多人先看完教程再找嘉哥开通？</h2>
+    <p>博客解决疑问，反馈和售后规则解决信任。</p>
+  </div>
+
+  <section class="trust-panel" id="blog-trust" aria-label="博客页信任说明">
+    <div class="trust-grid">
+      <article class="trust-card"><span class="tag">自己的账号</span><h3>开通到自己的账号</h3><p>不做共享号作为长期方案，优先处理到用户自己的 ChatGPT 账号。</p></article>
+      <article class="trust-card"><span class="tag account">无需密码</span><h3>减少敏感信息暴露</h3><p>Plus 用户按自助激活系统完成开通，不要求提供账号密码。</p></article>
+      <article class="trust-card"><span class="tag pay">售后边界</span><h3>30 天服务期内可处理</h3><p>异常按规则处理，Pro / 发票 / 对公先人工确认。</p></article>
+    </div>
+    <div class="trust-actions">
+      <a class="mini-button" href="/#proof">看完整用户反馈</a>
+      <a class="mini-button secondary" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">直接开通 Plus</a>
+    </div>
+  </section>
+
+  <div class="section-title">
+    <h2>全部文章，按购买前决策路径看</h2>
+    <p>不要面对 10 篇文章自己选，先判断能不能开，再判断安不安全，最后判断怎么买。</p>
   </div>
 
   <section class="article-list" id="articleGrid" aria-label="文章列表">
-    <a class="article-row article-link" href="/blog/chatgpt-plus-pro-zenme-xuan.html" data-tone="green" data-category="plan" data-search="ChatGPT Plus Pro 怎么选 Pro 100 Pro 200 iOS 订阅 发票 对公 售后">
-      <span class="num">01</span>
-      <div><span class="tag">Plus / Pro 选择</span><h3>ChatGPT Plus 和 Pro 怎么选？</h3><p>从使用频率、预算、账号订阅状态、iOS 订阅和发票对公需求判断。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
+    <div class="article-group" data-article-group>
+      <h3>A. 先判断能不能开</h3>
+      <div class="article-group-list">
+        <a class="article-row article-link" href="/blog/meiyou-jingwaika-gpt-chongzhi.html" data-tone="gold" data-category="pay" data-search="没有境外卡 GPT 充值 Visa Mastercard 银联 应用商店 卡密"><span class="num">01</span><div><span class="tag pay">无境外卡</span><h3>没有境外卡如何给 GPT 充值？</h3><p>没有境外卡也想给 GPT 充值时，先分清可选路径。</p></div><span class="go">阅读全文</span></a>
+        <a class="article-row article-link" href="/blog/gptplus-huiyuan-zenme-chong.html" data-tone="blue" data-category="beginner" data-search="GPTPlus 会员怎么冲 新手 官方网页 应用商店 卡密 开通路径"><span class="num">02</span><div><span class="tag account">新手路径</span><h3>GPTPlus 会员怎么冲？</h3><p>新手先分清官方网页、应用商店和充值卡密三条路径。</p></div><span class="go">阅读全文</span></a>
+        <a class="article-row article-link" href="/blog/google-pay-gpt.html" data-tone="blue" data-category="pay" data-search="Google 支付 GPT Google Pay Google Play 账号地区 余额 订阅"><span class="num">03</span><div><span class="tag account">Google Pay</span><h3>如何用 Google 支付 GPT？</h3><p>先分清 Google Pay 和 Google Play，再看账号地区、余额限制和开通选择。</p></div><span class="go">阅读全文</span></a>
+      </div>
+      <div class="group-actions"><a class="mini-button secondary" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">已经看明白了？开通 Plus</a><button class="mini-button secondary js-copy-wx" type="button">不确定账号状态？复制微信</button></div>
+    </div>
 
-    <a class="article-row article-link" href="/blog/jiage-ai-gpt.html" data-tone="gold" data-category="brand" data-search="嘉哥是谁 GPT充值 2025 野卡 2300 正规渠道 账号 售后">
-      <span class="num">02</span>
-      <div><span class="tag pay">品牌说明</span><h3>嘉哥是谁？为什么我从 2025 年开始做 GPT 充值</h3><p>讲清嘉哥是谁、为什么做 GPT 充值、怎么开通、价格和售后怎么处理。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
+    <div class="article-group" data-article-group>
+      <h3>B. 再判断安不安全</h3>
+      <div class="article-group-list">
+        <a class="article-row article-link" href="/blog/gpt-chengpinhao-goumai.html" data-tone="gold" data-category="account" data-search="GPT 成品号 购买 独享号 共享号 代充 区别 账号安全"><span class="num">04</span><div><span class="tag pay">账号选择</span><h3>gpt成品号购买前先看清</h3><p>已有 GPT 账号优先开通自己的账号；不要把共享号当长期方案。</p></div><span class="go">阅读全文</span></a>
+        <a class="article-row article-link" href="/blog/security-risk-guide.html" data-tone="blue" data-category="account" data-search="ChatGPT Plus 开通 账号风险 账号安全 共享号 敏感信息 低价渠道"><span class="num">05</span><div><span class="tag account">账号安全</span><h3>ChatGPT Plus 开通前，哪些账号风险要先避开？</h3><p>用自己的账号、少给敏感信息、远离异常低价渠道。</p></div><span class="go">阅读全文</span></a>
+        <a class="article-row article-link" href="/blog/jiage-ai-gpt.html" data-tone="gold" data-category="brand" data-search="嘉哥是谁 GPT充值 2025 野卡 2300 正规渠道 账号 售后"><span class="num">06</span><div><span class="tag pay">品牌说明</span><h3>嘉哥是谁？为什么我从 2025 年开始做 GPT 充值</h3><p>讲清嘉哥是谁、怎么开通、价格和售后怎么处理。</p></div><span class="go">阅读全文</span></a>
+      </div>
+      <div class="group-actions"><a class="mini-button secondary" href="/#proof">看完整用户反馈</a><button class="mini-button secondary js-copy-wx" type="button">复制微信问人工</button></div>
+    </div>
 
-    <a class="article-row article-link" href="/blog/gptplus-huiyuan-zenme-chong.html" data-tone="blue" data-category="beginner" data-search="GPTPlus 会员怎么冲 新手 官方网页 应用商店 卡密 开通路径">
-      <span class="num">03</span>
-      <div><span class="tag account">新手路径</span><h3>GPTPlus 会员怎么冲？</h3><p>新手先分清官方网页、应用商店和充值卡密三条路径。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
-
-    <a class="article-row article-link" href="/blog/google-pay-gpt.html" data-tone="blue" data-category="pay" data-search="Google 支付 GPT Google Pay Google Play 账号地区 余额 订阅">
-      <span class="num">04</span>
-      <div><span class="tag account">Google Pay</span><h3>如何用 Google 支付 GPT？</h3><p>先分清 Google Pay 和 Google Play，再看账号地区、余额限制和开通选择。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
-
-    <a class="article-row article-link" href="/blog/gpt-chengpinhao-goumai.html" data-tone="gold" data-category="account" data-search="GPT 成品号 购买 独享号 共享号 代充 区别 账号安全">
-      <span class="num">05</span>
-      <div><span class="tag pay">账号选择</span><h3>gpt成品号购买前先看清</h3><p>已有 GPT 账号优先开通自己的账号；不要把共享号当长期方案。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
-
-    <a class="article-row article-link" href="/blog/chatgptplus-chongzhi-fufei.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 充值付费 付款 微信 支付宝 第三方 卡密">
-      <span class="num">06</span>
-      <div><span class="tag">支付方式</span><h3>ChatGPT Plus 充值付费怎么付款？</h3><p>讲清微信支付宝发生在哪个环节，以及付款后如何确认 Plus 生效。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
-
-    <a class="article-row article-link" href="/blog/meiyou-jingwaika-gpt-chongzhi.html" data-tone="gold" data-category="pay" data-search="没有境外卡 GPT 充值 Visa Mastercard 银联 应用商店 卡密">
-      <span class="num">07</span>
-      <div><span class="tag pay">无境外卡</span><h3>没有境外卡如何给 GPT 充值？</h3><p>没有境外卡也想给 GPT 充值时，先分清可选路径。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
-
-    <a class="article-row article-link" href="/blog/chatgpt-plus-weixin-chongzhi.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 微信充值 微信支付 国内付款 开通 Plus">
-      <span class="num">08</span>
-      <div><span class="tag">微信充值</span><h3>ChatGPT Plus 微信充值可以吗？</h3><p>说明微信付款、账号安全边界、付款凭证和开通后验收方式。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
-
-    <a class="article-row article-link" href="/blog/chatgpt-plus-zhifubao-chongzhi.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 支付宝充值 支付宝付款 国内付款 开通 Plus">
-      <span class="num">09</span>
-      <div><span class="tag">支付宝充值</span><h3>ChatGPT Plus 支付宝充值可以吗？</h3><p>讲清官方网页没有支付宝直付入口时，支付宝充值通常是什么。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
-
-    <a class="article-row article-link" href="/blog/security-risk-guide.html" data-tone="blue" data-category="account" data-search="ChatGPT Plus 开通 账号风险 账号安全 共享号 敏感信息 低价渠道">
-      <span class="num">10</span>
-      <div><span class="tag account">账号安全</span><h3>ChatGPT Plus 开通前，哪些账号风险要先避开？</h3><p>用自己的账号、少给敏感信息、远离异常低价渠道。</p></div>
-      <span class="go">阅读全文</span>
-    </a>
+    <div class="article-group" data-article-group>
+      <h3>C. 最后判断怎么买</h3>
+      <div class="article-group-list">
+        <a class="article-row article-link" href="/blog/chatgptplus-chongzhi-fufei.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 充值付费 付款 微信 支付宝 第三方 卡密"><span class="num">07</span><div><span class="tag">支付方式</span><h3>ChatGPT Plus 充值付费怎么付款？</h3><p>讲清微信支付宝发生在哪个环节，以及付款后如何确认 Plus 生效。</p></div><span class="go">阅读全文</span></a>
+        <a class="article-row article-link" href="/blog/chatgpt-plus-weixin-chongzhi.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 微信充值 微信支付 国内付款 开通 Plus"><span class="num">08</span><div><span class="tag">微信充值</span><h3>ChatGPT Plus 微信充值可以吗？</h3><p>说明微信付款、账号安全边界、付款凭证和开通后验收方式。</p></div><span class="go">阅读全文</span></a>
+        <a class="article-row article-link" href="/blog/chatgpt-plus-zhifubao-chongzhi.html" data-tone="green" data-category="pay" data-search="ChatGPT Plus 支付宝充值 支付宝付款 国内付款 开通 Plus"><span class="num">09</span><div><span class="tag">支付宝充值</span><h3>ChatGPT Plus 支付宝充值可以吗？</h3><p>讲清官方网页没有支付宝直付入口时，支付宝充值通常是什么。</p></div><span class="go">阅读全文</span></a>
+        <a class="article-row article-link" href="/blog/chatgpt-plus-pro-zenme-xuan.html" data-tone="green" data-category="plan" data-search="ChatGPT Plus Pro 怎么选 Pro 100 Pro 200 iOS 订阅 发票 对公 售后"><span class="num">10</span><div><span class="tag">Plus / Pro 选择</span><h3>ChatGPT Plus 和 Pro 怎么选？</h3><p>从使用频率、预算、账号订阅状态、iOS 订阅和发票对公需求判断。</p></div><span class="go">阅读全文</span></a>
+      </div>
+      <div class="group-actions"><a class="mini-button secondary" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">立即开通 Plus</a><button class="mini-button secondary js-copy-wx" type="button">复制微信问人工</button></div>
+    </div>
   </section>
 
-  <p class="empty" id="emptyState">没有找到匹配文章。可以换一个关键词，比如“支付宝”“Pro”“无境外卡”。</p>
+  <p class="empty" id="emptyState">没有找到匹配文章。可以换一个关键词，比如“支付宝”“Pro”“无境外卡”，或复制微信 jiage01888 直接问人工。<br><button class="mini-button secondary js-copy-wx" type="button">复制微信咨询</button></p>
+
+  <div class="section-title">
+    <h2>开通前最后确认 4 件事</h2>
+    <p>看完教程后，按这 4 个问题判断能不能放心下一步。</p>
+  </div>
+
+  <section class="final-check" aria-label="开通前最后确认">
+    <ol class="check-list">
+      <li>是不是开到自己的 ChatGPT 账号？</li>
+      <li>是否需要提供账号密码？</li>
+      <li>付款后在哪里验收 Plus 状态？</li>
+      <li>如果没生效，售后怎么处理？</li>
+    </ol>
+    <p class="intro">GPlus.cc 当前 Plus 方案：¥188 / 30 天，微信 / 支付宝可付款，Pro / 发票 / 对公 / 账号异常先人工确认。</p>
+    <div class="final-actions">
+      <a class="mini-button" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">立即开通 Plus</a>
+      <button class="mini-button secondary js-copy-wx" type="button">复制微信 jiage01888</button>
+    </div>
+  </section>
+
   <p class="footer-note">GPlus.cc 为第三方服务网站，并非 OpenAI 或 ChatGPT 官方网站。页面中提及的产品名称仅用于说明适配对象。</p>
 </main>
+<div class="mobile-cta" aria-label="移动端快速开通入口">
+  <div>
+    <strong>Plus ¥188 / 30天</strong>
+    <span>自己账号｜无需密码</span>
+  </div>
+  <div class="mobile-cta-actions">
+    <a class="mini-button" href="https://fe.dtyuedan.cn/shop/jiage" target="_blank" rel="noopener">开通</a>
+    <button class="mini-button secondary js-copy-wx" type="button">微信</button>
+  </div>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -552,6 +739,7 @@ var _hmt = _hmt || [];
   var search = document.getElementById('articleSearch');
   var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
   var links = Array.prototype.slice.call(document.querySelectorAll('.article-link'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('[data-article-group]'));
   var empty = document.getElementById('emptyState');
   var toast = document.getElementById('toast');
 
@@ -578,6 +766,12 @@ var _hmt = _hmt || [];
       var show = matchCategory && matchSearch;
       card.style.display = show ? '' : 'none';
       if (show) visibleCount += 1;
+    });
+
+    groups.forEach(function(group) {
+      var groupLinks = Array.prototype.slice.call(group.querySelectorAll('.article-link'));
+      var hasVisible = groupLinks.some(function(card) { return card.style.display !== 'none'; });
+      group.style.display = hasVisible ? '' : 'none';
     });
 
     if (empty) empty.style.display = visibleCount ? 'none' : 'block';
