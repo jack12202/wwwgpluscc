@@ -857,6 +857,54 @@
   .floating-cta span { display: block; color: var(--muted); font-size: 13px; }
   .floating-actions { display: flex; gap: 8px; flex: 0 0 auto; }
 
+  .recharge-preflight {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(15, 32, 51, .72);
+    backdrop-filter: blur(10px);
+  }
+
+  .recharge-preflight.is-open { display: flex; }
+
+  .recharge-dialog {
+    width: min(420px, 100%);
+    box-sizing: border-box;
+    padding: 22px;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 28px 70px rgba(15, 32, 51, .3);
+    text-align: center;
+  }
+
+  .recharge-dialog h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: var(--ink);
+  }
+
+  .recharge-dialog p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .recharge-countdown {
+    margin-top: 12px;
+    color: var(--green);
+    font-weight: 900;
+  }
+
+  .recharge-actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
   .toast {
     position: fixed;
     left: 50%;
@@ -1266,6 +1314,17 @@ var _hmt = _hmt || [];
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="recharge-preflight" id="rechargePreflight" role="dialog" aria-modal="true" aria-labelledby="rechargePreflightTitle" aria-hidden="true">
+  <div class="recharge-dialog" tabindex="-1">
+    <h3 id="rechargePreflightTitle">即将进入 Plus 自助充值通道</h3>
+    <p>进入通道后，请按页面提示完成充值。充值成功前，请不要关闭已登录的 ChatGPT 网页，以免充值失败。</p>
+    <div class="recharge-countdown" id="rechargeCountdown">8 秒后自动进入充值通道</div>
+    <div class="recharge-actions">
+      <button class="btn btn-green" id="rechargeConfirm" type="button">我知道了，进入充值通道</button>
+      <button class="btn btn-ghost" id="rechargeCancel" type="button">暂不进入</button>
+    </div>
+  </div>
+</div>
 <div class="feedback-modal" id="feedbackModal" role="dialog" aria-modal="true" aria-label="用户反馈截图查看器">
   <div class="feedback-dialog">
     <div class="feedback-modal-head">
@@ -1295,6 +1354,12 @@ var _hmt = _hmt || [];
   const WX_ID = 'jiage01888';
   const toast = document.getElementById('toast');
   const floatingCta = document.querySelector('.floating-cta');
+  const rechargePreflight = document.getElementById('rechargePreflight');
+  const rechargeConfirm = document.getElementById('rechargeConfirm');
+  const rechargeCancel = document.getElementById('rechargeCancel');
+  const rechargeCountdown = document.getElementById('rechargeCountdown');
+  const RECHARGE_URL = 'https://987ai.vip/recharge';
+  const RECHARGE_COUNTDOWN_SECONDS = 8;
   const feedbackModal = document.getElementById('feedbackModal');
   const feedbackImage = document.getElementById('feedbackImage');
   const feedbackTitle = document.getElementById('feedbackTitle');
@@ -1361,6 +1426,10 @@ var _hmt = _hmt || [];
     }
   ];
   let feedbackIndex = 0;
+  let rechargeTimer = null;
+  let rechargeRemaining = RECHARGE_COUNTDOWN_SECONDS;
+  let rechargeTargetUrl = RECHARGE_URL;
+  let rechargeNavigated = false;
 
   function showToast(text) {
     if (!toast) return;
@@ -1371,6 +1440,63 @@ var _hmt = _hmt || [];
 
   function openNew(url) {
     window.open(url, '_blank', 'noopener');
+  }
+
+  function updateRechargeCountdown() {
+    if (rechargeCountdown) {
+      rechargeCountdown.textContent = rechargeRemaining + ' 秒后自动进入充值通道';
+    }
+  }
+
+  function stopRechargeCountdown() {
+    if (rechargeTimer) {
+      clearInterval(rechargeTimer);
+      rechargeTimer = null;
+    }
+  }
+
+  function closeRechargePreflight() {
+    stopRechargeCountdown();
+    if (!rechargePreflight) return;
+    rechargePreflight.classList.remove('is-open');
+    rechargePreflight.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function enterRecharge() {
+    if (rechargeNavigated) return;
+    rechargeNavigated = true;
+    stopRechargeCountdown();
+    openNew(rechargeTargetUrl);
+    closeRechargePreflight();
+  }
+
+  function startRechargeCountdown() {
+    stopRechargeCountdown();
+    rechargeNavigated = false;
+    rechargeRemaining = RECHARGE_COUNTDOWN_SECONDS;
+    updateRechargeCountdown();
+    rechargeTimer = setInterval(function(){
+      rechargeRemaining -= 1;
+      if (rechargeRemaining <= 0) {
+        enterRecharge();
+        return;
+      }
+      updateRechargeCountdown();
+    }, 1000);
+  }
+
+  function openRechargePreflight(url) {
+    if (!rechargePreflight) {
+      openNew(url || RECHARGE_URL);
+      return;
+    }
+    rechargeTargetUrl = url || RECHARGE_URL;
+    rechargePreflight.classList.add('is-open');
+    rechargePreflight.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ rechargePreflight.querySelector('.recharge-dialog')?.focus?.(); }, 0);
+    startRechargeCountdown();
   }
 
   function renderFeedback() {
@@ -1462,6 +1588,10 @@ var _hmt = _hmt || [];
   }
 
   document.addEventListener('keydown', function(event){
+    if (event.key === 'Escape' && rechargePreflight?.classList.contains('is-open')) {
+      closeRechargePreflight();
+      return;
+    }
     if (!feedbackModal || !feedbackModal.classList.contains('is-open')) return;
     if (event.key === 'Escape') closeFeedback();
     if (event.key === 'ArrowLeft') moveFeedback(-1);
@@ -1471,9 +1601,24 @@ var _hmt = _hmt || [];
   document.querySelectorAll('.js-recharge').forEach(function(btn){
     btn.addEventListener('click', function(event){
       event.preventDefault();
-      openNew('https://987ai.vip/recharge');
+      openRechargePreflight(RECHARGE_URL);
     });
   });
+
+  document.querySelectorAll('a[href="https://987ai.vip/recharge"]').forEach(function(link){
+    link.addEventListener('click', function(event){
+      event.preventDefault();
+      openRechargePreflight(link.href);
+    });
+  });
+
+  if (rechargeConfirm) rechargeConfirm.addEventListener('click', enterRecharge);
+  if (rechargeCancel) rechargeCancel.addEventListener('click', closeRechargePreflight);
+  if (rechargePreflight) {
+    rechargePreflight.addEventListener('click', function(event){
+      if (event.target === rechargePreflight) closeRechargePreflight();
+    });
+  }
 
   function updateFloatingCta() {
     if (!floatingCta) return;
