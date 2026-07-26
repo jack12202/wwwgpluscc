@@ -873,6 +873,8 @@
 
   .recharge-dialog {
     width: min(420px, 100%);
+    max-height: calc(100vh - 36px);
+    overflow: auto;
     box-sizing: border-box;
     padding: 22px;
     border-radius: 24px;
@@ -893,6 +895,68 @@
     line-height: 1.75;
   }
 
+  .recharge-warning {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border: 1px solid #fed7aa;
+    border-radius: 14px;
+    background: #fff7ed;
+    color: #7c2d12;
+    text-align: left;
+  }
+
+  .recharge-warning strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #9a3412;
+    font-size: 16px;
+  }
+
+  .recharge-warning p {
+    margin: 0;
+    color: inherit;
+    line-height: 1.65;
+  }
+
+  .recharge-warning p + p {
+    margin-top: 7px;
+    font-weight: 800;
+  }
+
+  .recharge-dialog.night-mode .recharge-warning {
+    border-color: #fca5a5;
+    background: #fef2f2;
+    color: #7f1d1d;
+  }
+
+  .recharge-dialog.night-mode .recharge-warning strong { color: #b91c1c; }
+
+  .recharge-night-ack {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 12px 14px;
+    border: 1px solid #fecaca;
+    border-radius: 14px;
+    background: #fff;
+    color: #7f1d1d;
+    font-weight: 800;
+    line-height: 1.55;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .recharge-night-ack[hidden] { display: none; }
+
+  .recharge-night-ack input {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 3px 0 0;
+    accent-color: #b91c1c;
+  }
+
   .recharge-countdown {
     margin-top: 12px;
     color: var(--green);
@@ -903,6 +967,23 @@
     display: grid;
     gap: 10px;
     margin-top: 18px;
+  }
+
+  .recharge-actions .btn {
+    width: 100%;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .recharge-actions .btn span {
+    font-size: 13px;
+    font-weight: 650;
+    opacity: .82;
+  }
+
+  .recharge-actions .btn:disabled {
+    cursor: not-allowed;
+    opacity: .55;
   }
 
   .toast {
@@ -1317,11 +1398,28 @@ var _hmt = _hmt || [];
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="recharge-preflight" id="rechargePreflight" role="dialog" aria-modal="true" aria-labelledby="rechargePreflightTitle" aria-hidden="true">
   <div class="recharge-dialog" tabindex="-1">
-    <h3 id="rechargePreflightTitle">即将进入 Plus 自助充值通道</h3>
-    <p>进入通道后，请按页面提示完成充值。充值成功前，请不要关闭已登录的 ChatGPT 网页，以免充值失败。</p>
-    <div class="recharge-countdown" id="rechargeCountdown">8 秒后自动进入充值通道</div>
+    <h3 id="rechargePreflightTitle">进入激活系统前，请先确认</h3>
+    <div class="recharge-warning" role="note" aria-label="避免重复充值提醒">
+      <div id="rechargeDayWarning">
+        <strong>未到账先联系客服，别急着重复充值</strong>
+        <p>提交卡密后如未到账，请联系本平台客服核实。客服时间：每天 9:00—23:00。</p>
+        <p>原订单确认前，请勿购买或提交第二张卡密。否则可能两张卡密都被消耗，但会员时长没有叠加，账号有效期仍然只有一个月。</p>
+      </div>
+      <div id="rechargeNightWarning" hidden>
+        <strong>夜间到账可能延迟，请先不要重复充值</strong>
+        <p>当前为非客服工作时间（23:00—次日 9:00）。夜间订单可能需要排队处理，不一定立即到账。页面暂未显示成功，不代表充值失败，原卡密仍可能稍后到账。</p>
+        <p>原订单确认前，请暂停购买或提交新的卡密——无论是在本平台还是其他平台购买。否则可能两张卡密都被消耗，但会员时长没有叠加，账号有效期仍然只有一个月；已消耗卡密无法撤销或退款。</p>
+      </div>
+    </div>
+    <label class="recharge-night-ack" id="rechargeNightAckRow" hidden>
+      <input id="rechargeNightAck" type="checkbox">
+      <span>我已知晓：夜间未到账需要等人工核实，不购买或提交第二张卡密。</span>
+    </label>
     <div class="recharge-actions">
-      <button class="btn btn-green" id="rechargeConfirm" type="button">我知道了，进入充值通道</button>
+      <button class="btn btn-green" id="rechargeConfirm" type="button">
+        <strong id="rechargeConfirmTitle">我已了解，进入激活系统</strong>
+        <span id="rechargeConfirmDesc">未确认原订单前，不购买或提交第二张卡密</span>
+      </button>
       <button class="btn btn-ghost" id="rechargeCancel" type="button">暂不进入</button>
     </div>
   </div>
@@ -1358,9 +1456,14 @@ var _hmt = _hmt || [];
   const rechargePreflight = document.getElementById('rechargePreflight');
   const rechargeConfirm = document.getElementById('rechargeConfirm');
   const rechargeCancel = document.getElementById('rechargeCancel');
-  const rechargeCountdown = document.getElementById('rechargeCountdown');
+  const rechargeConfirmTitle = document.getElementById('rechargeConfirmTitle');
+  const rechargeConfirmDesc = document.getElementById('rechargeConfirmDesc');
+  const rechargeNightAck = document.getElementById('rechargeNightAck');
   const RECHARGE_URL = 'https://www.aipass.me/api/recharge-go';
-  const RECHARGE_COUNTDOWN_SECONDS = 8;
+  const NIGHT_START_HOUR = 23;
+  const DAY_START_HOUR = 9;
+  const NIGHT_GATE_SECONDS = 3;
+  const NIGHT_PREVIEW = new URLSearchParams(window.location.search).get('preview') === 'night';
   const feedbackModal = document.getElementById('feedbackModal');
   const feedbackImage = document.getElementById('feedbackImage');
   const feedbackTitle = document.getElementById('feedbackTitle');
@@ -1427,10 +1530,12 @@ var _hmt = _hmt || [];
     }
   ];
   let feedbackIndex = 0;
-  let rechargeTimer = null;
-  let rechargeRemaining = RECHARGE_COUNTDOWN_SECONDS;
   let rechargeTargetUrl = RECHARGE_URL;
   let rechargeNavigated = false;
+  let nightMode = null;
+  let nightGateTimer = null;
+  let nightGateRemaining = 0;
+  let nightDelayPassed = false;
 
   function showToast(text) {
     if (!toast) return;
@@ -1443,21 +1548,123 @@ var _hmt = _hmt || [];
     window.open(url, '_blank', 'noopener');
   }
 
-  function updateRechargeCountdown() {
-    if (rechargeCountdown) {
-      rechargeCountdown.textContent = rechargeRemaining + ' 秒后自动进入充值通道';
+  function getBeijingHour() {
+    const hourPart = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Shanghai',
+      hour: '2-digit',
+      hourCycle: 'h23'
+    }).formatToParts(new Date()).find(function(part){ return part.type === 'hour'; });
+    return Number(hourPart?.value || 0);
+  }
+
+  function shouldUseNightMode() {
+    if (NIGHT_PREVIEW) return true;
+    const hour = getBeijingHour();
+    return hour >= NIGHT_START_HOUR || hour < DAY_START_HOUR;
+  }
+
+  function getNightNoticeKey() {
+    const beijingNow = Date.now() + 8 * 60 * 60 * 1000;
+    const nightBucket = Math.floor((beijingNow + 60 * 60 * 1000) / (24 * 60 * 60 * 1000));
+    return 'gplus-night-recharge-notice-' + nightBucket;
+  }
+
+  function wasNightNoticeShown() {
+    if (NIGHT_PREVIEW) return false;
+    try {
+      return sessionStorage.getItem(getNightNoticeKey()) === '1';
+    } catch (error) {
+      return false;
     }
   }
 
-  function stopRechargeCountdown() {
-    if (rechargeTimer) {
-      clearInterval(rechargeTimer);
-      rechargeTimer = null;
+  function markNightNoticeShown() {
+    try {
+      sessionStorage.setItem(getNightNoticeKey(), '1');
+    } catch (error) {}
+  }
+
+  function updateNightGate() {
+    if (!rechargeConfirm || !rechargeConfirmTitle) return;
+    if (!nightMode) {
+      rechargeConfirm.disabled = false;
+      rechargeConfirmTitle.textContent = '我已了解，进入激活系统';
+      return;
+    }
+    const checked = Boolean(rechargeNightAck?.checked);
+    rechargeConfirm.disabled = !(nightDelayPassed && checked);
+    if (!nightDelayPassed) {
+      rechargeConfirmTitle.textContent = '请先阅读夜间提醒（' + nightGateRemaining + '秒）';
+    } else if (!checked) {
+      rechargeConfirmTitle.textContent = '请勾选确认后继续';
+    } else {
+      rechargeConfirmTitle.textContent = '我已了解风险，继续进入激活系统';
+    }
+  }
+
+  function stopNightGate() {
+    if (nightGateTimer) {
+      clearInterval(nightGateTimer);
+      nightGateTimer = null;
+    }
+  }
+
+  function resetNightGate() {
+    stopNightGate();
+    if (rechargeNightAck) rechargeNightAck.checked = false;
+    if (!nightMode) {
+      nightDelayPassed = true;
+      updateNightGate();
+      return;
+    }
+    nightDelayPassed = false;
+    nightGateRemaining = NIGHT_GATE_SECONDS;
+    updateNightGate();
+    nightGateTimer = setInterval(function(){
+      nightGateRemaining -= 1;
+      if (nightGateRemaining <= 0) {
+        stopNightGate();
+        nightDelayPassed = true;
+      }
+      updateNightGate();
+    }, 1000);
+  }
+
+  function applyRechargeTimeMode(allowAutoOpen) {
+    const nextNightMode = shouldUseNightMode();
+    const modeChanged = nightMode !== nextNightMode;
+    nightMode = nextNightMode;
+    const dialog = rechargePreflight?.querySelector('.recharge-dialog');
+    dialog?.classList.toggle('night-mode', nightMode);
+    const title = document.getElementById('rechargePreflightTitle');
+    if (title) title.textContent = nightMode ? '当前为夜间时段，请先确认' : '进入激活系统前，请先确认';
+    const dayWarning = document.getElementById('rechargeDayWarning');
+    const nightWarning = document.getElementById('rechargeNightWarning');
+    const ackRow = document.getElementById('rechargeNightAckRow');
+    if (dayWarning) dayWarning.hidden = nightMode;
+    if (nightWarning) nightWarning.hidden = !nightMode;
+    if (ackRow) ackRow.hidden = !nightMode;
+    if (rechargeConfirmDesc) {
+      rechargeConfirmDesc.textContent = nightMode
+        ? '夜间未到账先等人工核实，不购买或提交第二张卡密'
+        : '未确认原订单前，不购买或提交第二张卡密';
+    }
+    if (rechargeCancel) {
+      rechargeCancel.textContent = nightMode ? '暂不操作，等客服上班' : '暂不进入';
+    }
+    if (modeChanged && rechargePreflight?.classList.contains('is-open')) resetNightGate();
+    if (modeChanged && nightMode && allowAutoOpen && !wasNightNoticeShown()) {
+      markNightNoticeShown();
+      setTimeout(function(){
+        if (shouldUseNightMode() && !rechargePreflight?.classList.contains('is-open')) {
+          openRechargePreflight(RECHARGE_URL);
+        }
+      }, 900);
     }
   }
 
   function closeRechargePreflight() {
-    stopRechargeCountdown();
+    stopNightGate();
     if (!rechargePreflight) return;
     rechargePreflight.classList.remove('is-open');
     rechargePreflight.setAttribute('aria-hidden', 'true');
@@ -1465,26 +1672,12 @@ var _hmt = _hmt || [];
   }
 
   function enterRecharge() {
+    if (rechargeConfirm?.disabled) return;
     if (rechargeNavigated) return;
     rechargeNavigated = true;
-    stopRechargeCountdown();
+    stopNightGate();
     window.location.href = rechargeTargetUrl;
     closeRechargePreflight();
-  }
-
-  function startRechargeCountdown() {
-    stopRechargeCountdown();
-    rechargeNavigated = false;
-    rechargeRemaining = RECHARGE_COUNTDOWN_SECONDS;
-    updateRechargeCountdown();
-    rechargeTimer = setInterval(function(){
-      rechargeRemaining -= 1;
-      if (rechargeRemaining <= 0) {
-        enterRecharge();
-        return;
-      }
-      updateRechargeCountdown();
-    }, 1000);
   }
 
   function openRechargePreflight(url) {
@@ -1492,12 +1685,14 @@ var _hmt = _hmt || [];
       window.location.href = url || RECHARGE_URL;
       return;
     }
+    applyRechargeTimeMode(false);
     rechargeTargetUrl = url || RECHARGE_URL;
     rechargePreflight.classList.add('is-open');
     rechargePreflight.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     setTimeout(function(){ rechargePreflight.querySelector('.recharge-dialog')?.focus?.(); }, 0);
-    startRechargeCountdown();
+    rechargeNavigated = false;
+    resetNightGate();
   }
 
   function renderFeedback() {
@@ -1614,12 +1809,15 @@ var _hmt = _hmt || [];
   });
 
   if (rechargeConfirm) rechargeConfirm.addEventListener('click', enterRecharge);
+  if (rechargeNightAck) rechargeNightAck.addEventListener('change', updateNightGate);
   if (rechargeCancel) rechargeCancel.addEventListener('click', closeRechargePreflight);
   if (rechargePreflight) {
     rechargePreflight.addEventListener('click', function(event){
       if (event.target === rechargePreflight) closeRechargePreflight();
     });
   }
+  applyRechargeTimeMode(true);
+  setInterval(function(){ applyRechargeTimeMode(true); }, 30000);
 
   function updateFloatingCta() {
     if (!floatingCta) return;
