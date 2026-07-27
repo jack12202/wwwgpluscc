@@ -1563,27 +1563,6 @@ var _hmt = _hmt || [];
     return hour >= NIGHT_START_HOUR || hour < DAY_START_HOUR;
   }
 
-  function getNightNoticeKey() {
-    const beijingNow = Date.now() + 8 * 60 * 60 * 1000;
-    const nightBucket = Math.floor((beijingNow + 60 * 60 * 1000) / (24 * 60 * 60 * 1000));
-    return 'gplus-night-recharge-notice-' + nightBucket;
-  }
-
-  function wasNightNoticeShown() {
-    if (NIGHT_PREVIEW) return false;
-    try {
-      return sessionStorage.getItem(getNightNoticeKey()) === '1';
-    } catch (error) {
-      return false;
-    }
-  }
-
-  function markNightNoticeShown() {
-    try {
-      sessionStorage.setItem(getNightNoticeKey(), '1');
-    } catch (error) {}
-  }
-
   function updateNightGate() {
     if (!rechargeConfirm || !rechargeConfirmTitle) return;
     if (!nightMode) {
@@ -1630,7 +1609,7 @@ var _hmt = _hmt || [];
     }, 1000);
   }
 
-  function applyRechargeTimeMode(allowAutoOpen) {
+  function applyRechargeTimeMode() {
     const nextNightMode = shouldUseNightMode();
     const modeChanged = nightMode !== nextNightMode;
     nightMode = nextNightMode;
@@ -1653,14 +1632,6 @@ var _hmt = _hmt || [];
       rechargeCancel.textContent = nightMode ? '暂不操作，等客服上班' : '暂不进入';
     }
     if (modeChanged && rechargePreflight?.classList.contains('is-open')) resetNightGate();
-    if (modeChanged && nightMode && allowAutoOpen && !wasNightNoticeShown()) {
-      markNightNoticeShown();
-      setTimeout(function(){
-        if (shouldUseNightMode() && !rechargePreflight?.classList.contains('is-open')) {
-          openRechargePreflight(RECHARGE_URL);
-        }
-      }, 900);
-    }
   }
 
   function closeRechargePreflight() {
@@ -1685,7 +1656,7 @@ var _hmt = _hmt || [];
       window.location.href = url || RECHARGE_URL;
       return;
     }
-    applyRechargeTimeMode(false);
+    applyRechargeTimeMode();
     rechargeTargetUrl = url || RECHARGE_URL;
     rechargePreflight.classList.add('is-open');
     rechargePreflight.setAttribute('aria-hidden', 'false');
@@ -1816,8 +1787,8 @@ var _hmt = _hmt || [];
       if (event.target === rechargePreflight) closeRechargePreflight();
     });
   }
-  applyRechargeTimeMode(true);
-  setInterval(function(){ applyRechargeTimeMode(true); }, 30000);
+  applyRechargeTimeMode();
+  setInterval(applyRechargeTimeMode, 30000);
 
   function updateFloatingCta() {
     if (!floatingCta) return;
